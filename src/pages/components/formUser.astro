@@ -1,0 +1,49 @@
+---
+import Layout from "../../../layouts/layout.astro";
+const { title, buttonText } = Astro.props;
+---
+
+<Layout>
+  <form id="register" title="Registro de Usuario">
+    <h1>{title}</h1>
+    <slot />
+    <button type="submit">{buttonText}</button>
+  </form>
+
+  <script>
+    try {
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("register");
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const name = (
+            document.querySelector('input[name="name"]') as HTMLInputElement
+          ).value;
+          const email = (
+            document.querySelector('input[name="email"]') as HTMLInputElement
+          ).value;
+          const user = (
+            document.querySelector('input[name="user"]') as HTMLInputElement
+          ).value;
+          const password = (
+            document.querySelector('input[name="password"]') as HTMLInputElement
+          ).value;
+          const data = {
+            name: name,
+            email: email,
+            user: user,
+            password: password,
+          };
+          let users = JSON.parse(localStorage.getItem("registerData"));
+          if (!Array.isArray(users)) {
+            users = [];
+          }
+          users.push(data);
+          localStorage.setItem("registerData", JSON.stringify(users));
+        });
+      });
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  </script>
+</Layout>
