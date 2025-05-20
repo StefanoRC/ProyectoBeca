@@ -14,32 +14,33 @@ const { title, buttonText, windowTitle } = Astro.props;
     try {
       document.addEventListener("DOMContentLoaded", () => {
         const form = document.getElementById("register");
-        form.addEventListener("submit", function (e) {
+
+        form.addEventListener("submit", (e) => {
           e.preventDefault();
-          const name = (
-            document.querySelector('input[name="name"]') as HTMLInputElement
-          ).value;
-          const email = (
-            document.querySelector('input[name="email"]') as HTMLInputElement
-          ).value;
-          const user = (
-            document.querySelector('input[name="user"]') as HTMLInputElement
-          ).value;
-          const password = (
-            document.querySelector('input[name="password"]') as HTMLInputElement
-          ).value;
-          const data = {
-            name: name,
-            email: email,
-            user: user,
-            password: password,
-          };
+          const inputs = form.querySelectorAll("input");
+          const data = {};
+          inputs.forEach((input) => {
+            data[input.name] = input.value;
+          });
+
           let users = JSON.parse(localStorage.getItem("registerData"));
           if (!Array.isArray(users)) {
             users = [];
           }
+
+          if (
+            users.some(
+              (user) => user.email == data.email || user.user == data.user
+            )
+          ) {
+            alert("El usuario o correo ya existen");
+            return;
+          }
+
           users.push(data);
           localStorage.setItem("registerData", JSON.stringify(users));
+          alert("Registro exitoso");
+          form.reset();
         });
       });
     } catch (error) {
