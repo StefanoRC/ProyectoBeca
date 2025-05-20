@@ -1,0 +1,47 @@
+---
+const { title } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>  
+    <style>
+    :root {
+      --bg-color: oklch(0.13 0.0691 279.86);
+      --primary: oklch(0.88 0.1884 161.19);
+      --secondary: oklch(0.63 0.2486 15.05);
+      --accent: oklch(0.31 0.1344 279.86);
+      --text: #ffffff;
+      --error: #ff4444;
+      --success: #44ff44;
+      --warning: #ffaa00;
+
+      --radius: 4px;
+      --shadow: 0 2px 3px var(--primary);
+    }
+
+    @font-face {
+      font-family: 'pf-videotext';
+      src: url('/assets/font/pf-videotext-pro-regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      font-family: "pf-videotext", sans-serif;
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+
+</html>
