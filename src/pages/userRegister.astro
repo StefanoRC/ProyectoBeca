@@ -2,7 +2,11 @@
 import FormUser from "./components/formUser.astro";
 ---
 
-<FormUser title="Registro de Usuario" buttonText="Crear Cuenta">
+<FormUser
+  title="Registro de Usuario"
+  buttonText="Crear Cuenta"
+  windowTitle="Crear Cuenta"
+>
   <label for="name">Nombre</label>
   <input type="text" name="name" required />
   <label for="email">Email</label>
@@ -12,3 +16,4 @@ import FormUser from "./components/formUser.astro";
   <label for="password">Contraseña</label>
   <input type="password" name="password" required />
 </FormUser>
+<style></style>
