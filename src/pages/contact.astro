@@ -1,0 +1,25 @@
+---
+import MainLayout from "../layouts/mainLayout.astro";
+import FormUser from "./components/formUser.astro";
+---
+
+<MainLayout title={"Contacto"}>
+  <h1>¿Quienes Somos?</h1>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium quos
+    quo ducimus, autem, maxime suscipit unde placeat, cumque exercitationem
+    aliquam laudantium blanditiis iste sapiente non illo commodi optio eaque a.
+  </p>
+  <img src="/images/hero.jpg" alt="Imagen de contacto" />
+  <footer>
+    <FormUser title="Contacto" buttonText={"Enviar mensaje"}>
+      <label for="name">Nombre:</label>
+      <input type="text" name="name" required />
+
+      <label for="email">Email</label>
+      <input type="email" name="email" required />
+
+      <textarea name="text_area" id="">Escribí tu mensaje</textarea>
+    </FormUser>
+  </footer>
+</MainLayout>
