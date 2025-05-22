@@ -5,14 +5,24 @@ import FormUser from "./components/formUser.astro";
 
 <MainLayout title={"Contacto"}>
   <h1>¿Quienes Somos?</h1>
-  <img src="../../public/assets/img/Logo-integrar-01.png" alt="Imagen de contacto" />
+  <img
+    src="../../public/assets/img/Logo-integrar-01.png"
+    alt="Imagen de contacto"
+  />
   <p>
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium quos
     quo ducimus, autem, maxime suscipit unde placeat, cumque exercitationem
     aliquam laudantium blanditiis iste sapiente non illo commodi optio eaque a.
-  </p> 
+  </p>
   <footer>
-    <FormUser title="Contacto" buttonText={"Enviar mensaje"} successMessage="Mensaje enviado con exito" errorMessage="Error al enviar el mensaje" storageKey="contactData" validateDuplicates={false}>
+    <FormUser
+      title="Contacto"
+      buttonText={"Enviar mensaje"}
+      successMessage="Mensaje enviado con exito"
+      errorMessage="Error al enviar el mensaje"
+      storageKey="contactData"
+      validateDuplicates={false}
+    >
       <label for="name">Nombre:</label>
       <input type="text" name="name" required />
 

@@ -9,8 +9,8 @@ import FormUser from "./components/formUser.astro";
   successMessage="Usuario registrado con exito"
   errorMessage="El usuario o correo ya existen"
   storageKey="registerData"
+  validateDuplicates={true}
 >
-
   <label for="name">Nombre</label>
   <input type="text" name="name" required />
 
