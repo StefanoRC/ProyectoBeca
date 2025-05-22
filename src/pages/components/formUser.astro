@@ -1,10 +1,25 @@
 ---
 import MainLayout from "../../layouts/mainLayout.astro";
-const { title, buttonText, windowTitle } = Astro.props;
+const {
+  title,
+  buttonText,
+  windowTitle,
+  successMessage = "Usuario registrado con exito",
+  errorMessage = "El usuario o correo ya existen",
+  storageKey = "registerData",
+  validateDuplicates = true,
+} = Astro.props;
 ---
 
 <MainLayout title={windowTitle}>
-  <form id="register" title="Registro de Usuario">
+  <form
+    id="register"
+    title="Registro de Usuario"
+    data-success-message={successMessage}
+    data-error-message={errorMessage}
+    data-storage-key={storageKey}
+    data-validate-duplicates={validateDuplicates}
+  >
     <h1>{title}</h1>
     <slot />
     <button type="submit">{buttonText}</button>
@@ -14,37 +29,48 @@ const { title, buttonText, windowTitle } = Astro.props;
     try {
       document.addEventListener("DOMContentLoaded", () => {
         const form = document.getElementById("register");
-
+        const successMessage = form.dataset.successMessage;
+        const errorMessage = form.dataset.errorMessage;
+        const storageKey = form.dataset.storageKey;
+        const validationDuplicates = form.dataset.validateDuplicate === "true";
         form.addEventListener("submit", (e) => {
           e.preventDefault();
           const inputs = form.querySelectorAll("input");
+          const textAreas = form.querySelectorAll("textarea");
+
           const data = {};
           inputs.forEach((input) => {
             data[input.name] = input.value;
           });
 
-          let users = JSON.parse(localStorage.getItem("registerData"));
+          textAreas.forEach((textAreas) => {
+            data[textAreas.name] = textAreas.value;
+          });
+
+          let users = JSON.parse(localStorage.getItem(storageKey));
           if (!Array.isArray(users)) {
             users = [];
           }
 
           if (
+            validationDuplicates &&
             users.some(
               (user) => user.email == data.email || user.user == data.user
             )
           ) {
-            alert("El usuario o correo ya existen");
+            alert(errorMessage);
             return;
           }
 
           users.push(data);
-          localStorage.setItem("registerData", JSON.stringify(users));
-          alert("Registro exitoso");
+          localStorage.setItem(storageKey, JSON.stringify(users));
+          alert(successMessage);
           form.reset();
         });
       });
     } catch (error) {
-      console.log("Error: ", error);
+      console.error("ocurrio un error", error);
+      alert("Ocurrio un error, por favor intente nuevamente");
     }
   </script>
 </MainLayout>
