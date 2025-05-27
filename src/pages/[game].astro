@@ -1,0 +1,42 @@
+---
+import { games } from "../data/games.js";
+import MainLayout from "../layouts/mainLayout.astro";
+
+export async function getStaticPaths() {
+  return games.map(game => ({
+    params: { game: game.id }
+  }));
+}
+
+const { game } = Astro.params;
+const selectedGame = games.find(g => g.id === game);
+
+if (!selectedGame) throw new Error("Juego no encontrado");
+
+---
+
+<MainLayout title={selectedGame.name}>
+<section>
+    <h1>{selectedGame.name}</h1>
+    <div id="quiz"
+        data-game-id={selectedGame.id}
+        data-score-to-unlock={selectedGame.scoreToUnlock}
+    >
+        <p>Cargando juego...</p>
+    </div>
+</section>
+<script type="module" src="/scripts/quizLogic.js"></script>
+</MainLayout>
+
+<style>
+    section {
+        border: 1px solid var(--primary);
+        padding: 1rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        margin: 2rem auto 1rem;
+        background-color: oklch(0.21 0.1209 279.86);
+        max-width: 900px
+    }
+    
+</style>
