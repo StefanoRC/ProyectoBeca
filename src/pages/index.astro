@@ -1,5 +1,6 @@
 ---
 import MainLayout from "../layouts/mainLayout.astro";
+import { games } from "../data/games.js";
 ---
 
 <MainLayout title="UI KIT">
@@ -7,32 +8,6 @@ import MainLayout from "../layouts/mainLayout.astro";
     <h1>NAVBAR</h1>
   </header>
   <main>
-    <section>
-      <h2>UI KIT</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
-        incidunt id placeat atque, quae aspernatur. Id architecto molestias
-        tempora, delectus mollitia labore distinctio in molestiae, dolorum
-        repellendus deleniti eos nihil.
-      </p>
-    </section>
-
-    <section>
-      <h3>🎛️ Form Controls</h3>
-      <input type="text" placeholder="Text input" />
-      <br /><br />
-      <textarea placeholder="Textarea"></textarea>
-      <br /><br />
-      <label><input type="checkbox" /> Checkbox</label>
-      <br />
-      <label><input type="radio" name="rad" /> Radio</label>
-      <br /><br />
-      <select>
-        <option>Select an option</option>
-        <option>Option 1</option>
-      </select>
-    </section>
-
     <section>
       <h3>🖲️ Buttons</h3>
       <button class="btn">Primary</button>
@@ -50,6 +25,17 @@ import MainLayout from "../layouts/mainLayout.astro";
     <section>
       <h3>📦 Card</h3>
       <div class="card_container">
+        {games.map(game => (
+          <div class="card">
+            <div>
+              <img src="/assets/img/minecraft-cover.jpg" alt="minecraft-cover" />
+              <a class="btn_anchor" href={`/${game.id}`}>
+                <button class="btn card_item">Play to unlock</button>
+              </a>
+            </div>
+            <p class="card_item">Valor: {game.scoreToUnlock} creditos</p>
+          </div>
+        ))}
         <div class="card">
           <div>
             <img src="/assets/img/minecraft-cover.jpg" alt="minecraft-cover" />
@@ -59,50 +45,13 @@ import MainLayout from "../layouts/mainLayout.astro";
           </div>
           <p class="card_item">Valor: x Creditos</p>
         </div>
-        <div class="card">
-          <div>
-            <img src="/assets/img/minecraft-cover.jpg" alt="minecraft-cover" />
-            <a class="btn_anchor" href="#"
-              ><button class="btn card_item">Play to unlock</button></a
-            >
-          </div>
-          <p class="card_item">Valor: x Creditos</p>
-        </div>
-        <div class="card">
-          <div>
-            <img src="/assets/img/minecraft-cover.jpg" alt="minecraft-cover" />
-            <a class="btn_anchor" href="#"
-              ><button class="btn card_item">Play to unlock</button></a
-            >
-          </div>
-          <p class="card_item">Valor: x Creditos</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h3>📊 Grid Layout</h3>
-      <div class="grid">
-        <div class="grid_item">Box 1</div>
-        <div class="grid_item">Box 2</div>
-        <div class="grid_item">Box 3</div>
-      </div>
-    </section>
-
-    <section>
-      <h3>⏳ Loader</h3>
-      <div class="loader_container">
-        <p>Loading...</p>
-        <div class="loader"></div>
       </div>
     </section>
   </main>
   <aside>
     <h3>🗂️ Sidebar</h3>
     <ul>
-      <li><a href="#link1">Link 1</a></li>
-      <li><a href="#link2">Link 2</a></li>
-      <li><a href="#link3">Link 3</a></li>
+      <li><a href="/biblioteca">📚 Ver Biblioteca</a></li>
     </ul>
   </aside>
   <footer>
@@ -173,106 +122,7 @@ import MainLayout from "../layouts/mainLayout.astro";
     background-color: oklch(0.21 0.1209 279.86);
   }
 
-  /* H1 & FORMS */
-
-  h1 {
-    color: var(--primary);
-    text-shadow: var(--shadow);
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  input,
-  textarea,
-  select {
-    background: black;
-    color: var(--text);
-    border: 1px solid var(--primary);
-    padding: 0.5rem;
-    border-radius: var(--radius);
-  }
-
-  textarea {
-    min-height: 5rem;
-    max-height: 10rem;
-    min-width: 20dvh;
-    max-width: 60dvh;
-  }
-
-  /* BUTTONS */
-
-  .btn {
-    width: auto;
-    height: 2em;
-    margin: 0.5em;
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 0.625em;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-  }
-
-  .btn:hover {
-    color: black;
-  }
-
-  .btn:after {
-    content: "";
-    background: white;
-    position: absolute;
-    z-index: -1;
-    left: -20%;
-    right: -20%;
-    top: 0;
-    bottom: 0;
-    transform: skewX(-45deg) scale(0, 1);
-    transition: all 0.5s;
-  }
-
-  .btn:hover:after {
-    transform: skewX(-45deg) scale(1, 1);
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-  }
-
-  /* BUTTON - optional */
-
-  .btn-secondary {
-    background: var(--secondary);
-  }
-
-  .btn-accent {
-    background: var(--accent);
-  }
-
-  /* BADGES */
-
-  .badge {
-    padding: 0.3rem 0.6rem;
-    border-radius: var(--radius);
-    font-size: 0.8rem;
-    font-weight: bold;
-  }
-
-  .badge-success {
-    background: var(--success);
-    color: black;
-  }
-  .badge-error {
-    background: var(--error);
-    color: black;
-  }
-
-  .badge-warning {
-    background: var(--warning);
-    color: black;
-  }
+  
 
   /* CARDS */
 
@@ -340,50 +190,5 @@ import MainLayout from "../layouts/mainLayout.astro";
     transition: all 0.2s ease-in-out;
     opacity: 1;
     bottom: 5%;
-  }
-
-  /* GRID */
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-  }
-
-  .grid_item {
-    background: #111;
-    border: 1px solid var(--primary);
-    padding: 1rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-  }
-
-  /* LOADER */
-
-  .loader_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-  }
-
-  .loader {
-    border: 4px solid var(--bg-color);
-    border-top: 4px solid var(--primary);
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 1s linear infinite;
-    margin-top: 1rem;
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
   }
 </style>
