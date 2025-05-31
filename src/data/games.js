@@ -3,6 +3,7 @@ export const games = [
   {
     id: "minecraft",
     name: "Minecraft",
+    image: "/assets/img/minecraft-cover.jpg",
     scoreToUnlock: 12,
     questions: [
       {
@@ -93,5 +94,100 @@ export const games = [
     ],
   },
   
-  
+  {
+    id: "warcraft3",
+    name: "Warcraft 3",
+    image: "/assets/img/warcraft3-cover.jpg",
+    scoreToUnlock: 12,
+    questions: [
+      {
+        question: "¿Quién es el líder de los Orcos en Warcraft 3?",
+        options: ["Thrall", "Grom Hellscream", "Cairne Bloodhoof", "Rexxar"],
+        answer: "Thrall",
+      },
+      {
+        question: "¿Qué raza utiliza los Necromancers como unidad en Warcraft 3?",
+        options: ["Humanos", "Orcos", "No-muertos", "Elfos nocturnos"],
+        answer: "No-muertos",
+      },
+      {
+        question: "¿Cómo se llama el artefacto que Arthas obtiene al convertirse en Caballero de la Muerte?",
+        options: ["Frostmourne", "Ashbringer", "Doomhammer", "Skull of Gul'dan"],
+        answer: "Frostmourne",
+      },
+      {
+        question: "¿Qué recurso adicional, además del oro, es necesario para construir edificios y entrenar unidades?",
+        options: ["Cristales", "Madera", "Hierro", "Piedra"],
+        answer: "Madera",
+      },
+      {
+        question: "¿Cuál es el nombre del árbol gigante que los Elfos Nocturnos usan como base principal?",
+        options: ["Árbol de la Eternidad", "Árbol de la Vida", "Árbol del Conocimiento", "Árbol del Mundo"],
+        answer: "Árbol de la Vida",
+      },
+      {
+        question: "¿Qué personaje se convierte en el Rey Exánime en Warcraft 3?",
+        options: ["Arthas", "Kel'Thuzad", "Ner'zhul", "Illidan"],
+        answer: "Arthas",
+      },
+      {
+        question: "¿Cuál es el nombre de la expansión de Warcraft 3?",
+        options: ["Frozen Throne", "Legacy of the Void", "Reforged", "Blood War"],
+        answer: "Frozen Throne",
+      },
+      {
+        question: "¿Qué héroe usa el hechizo 'Resurrección' en Warcraft 3?",
+        options: ["Paladín", "Archimago", "Caballero de la Muerte", "Druida de la Garra"],
+        answer: "Paladín",
+      },
+      {
+        question: "¿Quién es el maestro de Arthas en su transformación como Caballero de la Muerte?",
+        options: ["Kel'Thuzad", "Anub'arak", "Illidan", "Mal'Ganis"],
+        answer: "Mal'Ganis",
+      },
+      {
+        question: "¿Qué unidad de los No-muertos puede construir estructuras?",
+        options: ["Necrófago", "Acolito", "Banshee", "Lich"],
+        answer: "Acolito",
+      },
+      {
+        question: "¿Cómo se llama la capital de los Humanos en Warcraft 3?",
+        options: ["Lordaeron", "Stormwind", "Stratholme", "Dalaran"],
+        answer: "Lordaeron",
+      },
+      {
+        question: "¿Qué raza tiene Chimeras como unidad voladora poderosa?",
+        options: ["Elfos nocturnos", "Orcos", "Humanos", "No-muertos"],
+        answer: "Elfos nocturnos",
+      },
+      {
+        question: "¿Cómo se llama la región helada donde Arthas encuentra Frostmourne?",
+        options: ["Rasganorte", "Quel'Thalas", "Stranglethorn", "Azshara"],
+        answer: "Rasganorte",
+      },
+      {
+        question: "¿Qué unidad de los Orcos puede convertirse en invisible?",
+        options: ["Asesino Sombrío", "Jinete de Murciélagos", "Chamán", "Ladrón"],
+        answer: "Asesino Sombrío",
+      },
+      {
+        question: "¿Quién traiciona a los Humanos en Warcraft 3?",
+        options: ["Arthas", "Jaina Proudmoore", "Uther", "Kael'thas"],
+        answer: "Arthas",
+      },
+      {
+        question: "¿Cómo se llama el maestro del Rey Exánime en Warcraft 3?",
+        options: ["Kel'Thuzad", "Ner'zhul", "Illidan", "Mannoroth"],
+        answer: "Ner'zhul",
+      },
+
+      {
+        question: "¿Qué unidad puede lanzar Polimorfia en Warcraft 3?",
+        options: ["Archimago", "Hechicera", "Chamán", "Brujo"],
+        answer: "Hechicera",
+      },
+    ],
+  },
+
+
 ];
