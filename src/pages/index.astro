@@ -3,63 +3,59 @@ import MainLayout from "../layouts/mainLayout.astro";
 import { games } from "../data/games.js";
 ---
 
-<MainLayout title="UI KIT">
+<MainLayout title="GamesQuiz">
   <header>
-    <h1>NAVBAR</h1>
+    <h1>GamesQuiz</h1>
+    <button id="menu-toggle" class="menu-button">☰</button>
+    <nav id="mobile-menu" class="hidden">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/userRegister">Register/Login</a></li>
+        <li><a href="#catalog">Catálogo</a></li>
+        <li><a href="/contact">Contacto</a></li>
+      </ul>
+    </nav>
   </header>
+
   <main>
     <section>
-      <h3>🖲️ Buttons</h3>
-      <button class="btn">Primary</button>
-      <button class="btn btn-secondary">Secondary</button>
-      <button class="btn btn-accent">Accent</button>
+    <h2>🎮 Bienvenido a GamesQuiz</h2>
+    <p>GamesQuiz es un desafio donde pondrás a prueba tus conocimientos sobre videojuegos y lograras desbloquear mas desafios a medida que avances. Ve por un buen cafe y comienza a demostrar tu valia gamer!</p>
     </section>
 
     <section>
-      <h3>🏷️ Badges</h3>
-      <span class="badge badge-success">Success</span>
-      <span class="badge badge-error">Error</span>
-      <span class="badge badge-warning">Warning</span>
+    <h3>📜 Reglas del juego</h3>
+    <ul>
+      <li>Responde correctamente las preguntas para ganar puntos.</li>
+      <li>Necesitás alcanzar el puntaje mínimo para desbloquear cada juego.</li>
+      <li>Si pierdes todas tus vidas, no te preocupes, puedes intentarlo otra vez. Advertencia: No esta permitido buscar en Google. Recuerda que Dios lo ve todo XD.</li>
+    </ul>
     </section>
 
     <section>
-      <h3>📦 Card</h3>
-      <div class="card_container">
+      <h3>📦 Catálogo de Juegos</h3>
+      <div id="catalog" class="card_container">
         {games.map(game => (
           <div class="card">
             <div>
-              <img src="/assets/img/minecraft-cover.jpg" alt="minecraft-cover" />
+              <img src={game.image} alt={game.name} />
               <a class="btn_anchor" href={`/${game.id}`}>
-                <button class="btn card_item">Play to unlock</button>
+                <button class="btn card_item">Jugar</button>
               </a>
             </div>
-            <p class="card_item">Valor: {game.scoreToUnlock} creditos</p>
+            <p class="card_item">Valor: {game.scoreToUnlock} créditos</p>
           </div>
         ))}
-        <div class="card">
-          <div>
-            <img src="/assets/img/minecraft-cover.jpg" alt="minecraft-cover" />
-            <a class="btn_anchor" href="#"
-              ><button class="btn card_item">Play to unlock</button></a
-            >
-          </div>
-          <p class="card_item">Valor: x Creditos</p>
-        </div>
       </div>
     </section>
   </main>
-  <aside>
-    <h3>🗂️ Sidebar</h3>
-    <ul>
-      <li><a href="/biblioteca">📚 Ver Biblioteca</a></li>
-    </ul>
-  </aside>
+  
   <footer>
     <nav>
       <ul>
-        <li><a href="#home">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="/contact">Contact</a></li>
       </ul>
     </nav>
     <p>&copy; 2023 Your Company</p>
@@ -68,20 +64,20 @@ import { games } from "../data/games.js";
 
 <style>
   /* SEMANTICS */
-  body {
+    body {
     margin: 0;
     background-color: var(--bg-color);
     color: var(--text);
     display: grid;
-    grid-template-columns: 1fr 4fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr auto; /* ✅ Esto lo organiza en filas */
     grid-template-areas:
-      "header header"
-      "sidebar main"
-      "footer footer";
+      "header"
+      "main"
+      "footer"; /* ✅ Ajuste aquí */
     height: 100vh;
     font-size: x-large;
   }
+
 
   header {
     display: flex;
@@ -91,15 +87,6 @@ import { games } from "../data/games.js";
     background-color: oklch(0.21 0.1209 279.86);
     box-shadow: var(--shadow);
     grid-area: header;
-  }
-
-  main {
-    grid-area: main;
-  }
-
-  aside {
-    grid-area: sidebar;
-    padding: 1rem;
   }
 
   footer {
@@ -121,8 +108,6 @@ import { games } from "../data/games.js";
     margin: 1rem;
     background-color: oklch(0.21 0.1209 279.86);
   }
-
-  
 
   /* CARDS */
 
@@ -191,4 +176,50 @@ import { games } from "../data/games.js";
     opacity: 1;
     bottom: 5%;
   }
+
+  /* MENU */
+  .menu-button {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#mobile-menu {
+  position: absolute;
+  top: 120px;
+  left: 0;
+  width: 100%;
+  background: var(--bg-color);
+  padding: 1rem;
+  display: none;
+  flex-direction: column;
+  z-index: 10;
+}
+
+#mobile-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+#mobile-menu li {
+  padding: 10px;
+}
 </style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const menu = document.getElementById("mobile-menu");
+  const toggleBtn = document.getElementById("menu-toggle");
+
+  toggleBtn.addEventListener("click", () => {
+    if (menu.classList.contains("hidden")) {
+      menu.classList.remove("hidden");
+      menu.style.display = "block";
+    } else {
+      menu.classList.add("hidden");
+      menu.style.display = "none";
+    }
+  });
+});
+</script>
