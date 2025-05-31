@@ -26,11 +26,11 @@ import { games } from "../data/games.js";
       <h3>📦 Card</h3>
       <div class="card_container">
         {games.map(game => (
-          <div class="card">
+          <div class="card" data-game-id={game.id} data-game-idalt={game.idalt}>
             <div>
               <img src="/assets/img/minecraft-cover.jpg" alt="minecraft-cover" />
               <a class="btn_anchor" href={`/${game.id}`}>
-                <button class="btn card_item">Play to unlock</button>
+                <button class="btn card_item">Jugar</button>
               </a>
             </div>
             <p class="card_item">Valor: {game.scoreToUnlock} creditos</p>
@@ -64,6 +64,26 @@ import { games } from "../data/games.js";
     </nav>
     <p>&copy; 2023 Your Company</p>
   </footer>
+  <script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    const unlockedGames = JSON.parse(localStorage.getItem("unlockedGames") || "[]");
+
+    document.querySelectorAll(".card").forEach(card => {
+      const gameId = card.dataset.gameId;
+      const gameIdAlt = card.dataset.gameIdalt;
+      if (unlockedGames.includes(gameId)) {
+        
+
+        const anchor = card.querySelector("a");
+        const button = card.querySelector("button");
+
+        // Cambiar href y texto
+        anchor.href = `/${gameIdAlt}`;
+        button.textContent = "Detalles del juego";
+      }
+    });
+  });
+</script>
 </MainLayout>
 
 <style>
@@ -168,7 +188,6 @@ import { games } from "../data/games.js";
 
   .card_item {
     margin: 5px;
-    padding: 5px;
   }
 
   .card div {
@@ -181,9 +200,11 @@ import { games } from "../data/games.js";
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
     cursor: pointer;
-    left: 20%;
+    left: 50%;
     bottom: -5%;
+    transform: translateX(-50%);
     z-index: auto;
+    width: auto;
   }
 
   .card:hover .btn_anchor {
@@ -192,3 +213,4 @@ import { games } from "../data/games.js";
     bottom: 5%;
   }
 </style>
+
