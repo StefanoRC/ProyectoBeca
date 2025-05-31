@@ -82,12 +82,13 @@ list-style-type: none;
 
 .btn {
 width: auto;
-height: 2em;
+height: auto;
 margin: 0.5em;
+padding: 0.5rem;
 background: var(--primary);
 color: white;
 border: none;
-border-radius: 0.625em;
+border-radius: 0.625rem;
 font-size: 18px;
 font-weight: bold;
 cursor: pointer;
