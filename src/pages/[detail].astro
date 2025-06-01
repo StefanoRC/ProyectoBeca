@@ -1,0 +1,116 @@
+---
+import { games } from '../data/games.js'; // ruta según tu estructura
+import MainLayout from "../layouts/mainLayout.astro";
+
+export async function getStaticPaths() {
+  return games.map(game => ({
+    params: { detail: game.idalt }
+  }));
+}
+
+const { detail } = Astro.params;
+const game = games.find(g => g.idalt === detail);
+
+if (!game) {
+  throw new Error(`Juego con id '${detail}' no encontrado`);
+}
+
+---
+
+<MainLayout title={game.name}>
+  <section class="game-detail">
+    <h1>{game.name}</h1>
+    <img src={game.image} alt={game.name} width="500" />
+
+    <p>{game.description}</p>
+
+    <ul>
+      <li><strong>Fecha de lanzamiento:</strong> {game.dateOfRelease}</li>
+      <li><strong>Género:</strong> {game.genre}</li>
+      <li><strong>Desarrollador:</strong> {game.developer}</li>
+      <li><strong>Distribuidor:</strong> {game.publisher}</li>
+      <li><strong>Plataformas:</strong> {game.platforms.join(", ")}</li>
+    </ul>
+
+    <p>
+      <a href={game.website} target="_blank" rel="noopener noreferrer">
+        Sitio oficial
+      </a>
+    </p>
+
+    <p>
+      <a href={game.trailer} target="_blank" rel="noopener noreferrer">
+        Ver tráiler en YouTube
+      </a>
+    </p>
+  </section>
+
+  <section class="comment-section">
+  <h2>Dejá tu comentario</h2>
+  <form id="commentForm">
+    <textarea id="commentText" placeholder="Escribí tu comentario..." required></textarea>
+    <input type="email" id="userEmail" placeholder="Tu correo electrónico" required />
+    <button type="submit">Enviar</button>
+    <span id="errorMsg" class="error"></span>
+  </form>
+
+  <div id="commentDisplay" class="comment-display"></div>
+
+  <style>
+    .game-detail {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+
+    .game-detail img {
+      display: block;
+      margin: 1rem 0;
+      border-radius: 1rem;
+    }
+
+    .game-detail ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .game-detail li {
+      margin-bottom: 0.5rem;
+    }
+
+    .game-detail a {
+      color: #1e90ff;
+      text-decoration: underline;
+    }
+
+    .comment-section {
+      margin-top: 3rem;
+    }
+
+    textarea,
+    input {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9rem;
+    }
+
+    .comment-display {
+      margin-top: 2rem;
+      background: #f1f1f1;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      color: var(--accent)
+    }    
+  </style>
+
+
+  <script type="module" src="/scripts/quizLogic.js"></script>
+</MainLayout>
