@@ -2,8 +2,17 @@
 export const games = [
   {
     id: "minecraft",
+    idalt: "minecraft_detail",
     name: "Minecraft",
     image: "/assets/img/minecraft-cover.jpg",
+    description: "Minecraft es un juego de construcción, aventura y supervivencia en un mundo abierto compuesto por bloques. Los jugadores pueden explorar, recolectar recursos, construir estructuras y enfrentarse a criaturas hostiles.",
+    dateOfRelease: "2011-11-18",
+    genre: "Sandbox, Supervivencia, Aventura",
+    developer: "Mojang Studios",
+    publisher: "Mojang Studios",
+    platforms: ["PC", "Xbox", "PlayStation", "Nintendo Switch", "Mobile"],
+    website: "https://www.minecraft.net/",
+    trailer: "https://www.youtube.com/watch?v=MmB9b5njVbA", 
     scoreToUnlock: 12,
     questions: [
       {
@@ -96,8 +105,17 @@ export const games = [
   
   {
     id: "warcraft3",
+    idalt: "warcraft3_detail",
     name: "Warcraft 3",
     image: "/assets/img/warcraft3-cover.jpg",
+    description: "Warcraft 3 es un juego de estrategia en tiempo real que narra la lucha entre varias razas fantásticas por el control del mundo de Azeroth. Incluye campañas épicas, multijugador y un editor de mapas.",
+    dateOfRelease: "2002-07-03",
+    genre: "Estrategia en tiempo real (RTS)",
+    developer: "Blizzard Entertainment",
+    publisher: "Blizzard Entertainment",
+    platforms: ["PC", "Mac"],
+    website: "https://classic.blizzard.com/es-mx/warcraft3/",
+    trailer: "https://www.youtube.com/watch?v=Rla3FUlxJdE",
     scoreToUnlock: 12,
     questions: [
       {
