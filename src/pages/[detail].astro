@@ -111,6 +111,56 @@ if (!game) {
     }    
   </style>
 
+    <script type="module">
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("commentForm");
+            const commentText = document.getElementById("commentText");
+            const userEmail = document.getElementById("userEmail");
+            const errorMsg = document.getElementById("errorMsg");
+            const commentDisplay = document.getElementById("commentDisplay");
 
+            const gameId = "{game.idalt}";
+            const registered = JSON.parse(localStorage.getItem("registerData") || "[]");
+            const commentKey = "comment_" + gameId;
+            const savedComments = JSON.parse(localStorage.getItem(commentKey) || "[]");
+
+            function renderComments() {
+            if (savedComments.length === 0) {
+                commentDisplay.innerHTML = "<p>No hay comentarios aún.</p>";
+                return;
+            }
+
+            commentDisplay.innerHTML = `
+                <h3>Comentarios:</h3>
+                ${savedComments.map(c => `<p><strong>${c.email}:</strong> ${c.text}</p>`).join("")}
+            `;
+            }
+
+            renderComments();
+
+            form.addEventListener("submit", e => {
+            e.preventDefault();
+            errorMsg.textContent = "";
+
+            const email = userEmail.value.trim();
+            const text = commentText.value.trim();
+
+            const userExists = registered.find(user => user.email === email);
+
+            if (!userExists) {
+                errorMsg.innerHTML = `Este email no está registrado. <a href="/userRegister">Registrate acá</a>`;
+                return;
+            }
+
+            const newComment = { email, text };
+            savedComments.push(newComment);
+            localStorage.setItem(commentKey, JSON.stringify(savedComments));
+            renderComments();
+
+            commentText.value = "";
+            userEmail.value = "";
+            });
+        });
+  </script>
   <script type="module" src="/scripts/quizLogic.js"></script>
 </MainLayout>
