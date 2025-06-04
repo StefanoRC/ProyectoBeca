@@ -23,6 +23,7 @@ const {
     <h1>{title}</h1>
     <slot />
     <button type="submit">{buttonText}</button>
+    <div id="form-feedback"></div>
   </form>
 
   <script>
@@ -33,10 +34,47 @@ const {
         const errorMessage = form.dataset.errorMessage;
         const storageKey = form.dataset.storageKey;
         const validationDuplicates = form.dataset.validateDuplicate === "true";
+        const feedback = document.getElementById("form-feedback");
         form.addEventListener("submit", (e) => {
           e.preventDefault();
           const inputs = form.querySelectorAll("input");
           const textAreas = form.querySelectorAll("textarea");
+          const emailInput = form.querySelector('input[type="email"]');
+          let valid = true;
+          let errorMsg = "";
+
+          inputs.forEach((input) => {
+            if (!input.value.trim()) {
+              valid = false;
+              errorMsg = "Por favor, completa todos los campos.";
+              input.classList.add("input-error");
+            } else {
+              input.classList.remove("input-error");
+            }
+          });
+
+          textAreas.forEach((textarea) => {
+            if (!textarea.value.trim()) {
+              valid = false;
+              errorMsg = "Por favor, completa todos los campos.";
+              textarea.classList.add("input-error");
+            } else {
+              textarea.classList.remove("input-error");
+            }
+          });
+
+          if (emailInput && !/^[^@]+@[^@]+\.[^@]+$/.test(emailInput.value)) {
+            valid = false;
+            errorMsg = "Por favor, ingresa un email válido.";
+            emailInput.classList.add("input-error");
+          }
+
+          if (!valid) {
+            feedback.textContent = errorMsg;
+            feedback.style.color = "var(--error)";
+            alert(errorMsg);
+            return;
+          }
 
           const data = {};
           inputs.forEach((input) => {
@@ -58,13 +96,15 @@ const {
               (user) => user.email == data.email || user.user == data.user
             )
           ) {
-            alert(errorMessage);
+            feedback.textContent = errorMessage;
+            feedback.style.color = "var(--error)";
             return;
           }
 
           users.push(data);
           localStorage.setItem(storageKey, JSON.stringify(users));
-          alert(successMessage);
+          feedback.textContent = successMessage;
+          feedback.style.color = "var(--success)";
           form.reset();
         });
       });
