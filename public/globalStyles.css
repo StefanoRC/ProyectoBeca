@@ -4,6 +4,7 @@
 --secondary: oklch(0.63 0.2486 15.05);
 --accent: oklch(0.31 0.1344 279.86);
 --text: #ffffff;
+--light-text: #d3d3d3;
 --error: #ff4444;
 --success: #44ff44;
 --warning: #ffaa00;
@@ -82,12 +83,13 @@ list-style-type: none;
 
 .btn {
 width: auto;
-height: 2em;
+height: auto;
 margin: 0.5em;
+padding: 0.5rem;
 background: var(--primary);
 color: white;
 border: none;
-border-radius: 0.625em;
+border-radius: 0.625rem;
 font-size: 18px;
 font-weight: bold;
 cursor: pointer;
