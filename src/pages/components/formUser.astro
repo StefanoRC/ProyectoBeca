@@ -73,4 +73,27 @@ const {
       alert("Ocurrio un error, por favor intente nuevamente");
     }
   </script>
+
+  <style>
+    #register {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: var(--bg-color);
+      border-radius: 8px;
+      gap: 1em;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    #register button[type="submit"] {
+      display: block;
+      margin: 3em auto 0 auto;
+      background-color: var(--bg-color);
+      color: var(--primary);
+    }
+  </style>
 </MainLayout>
