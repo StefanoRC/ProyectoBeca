@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const container = document.getElementById("quiz");
+  const container = document.querySelector(".game-quiz__content");
   const gameId = container.dataset.gameId;
   const scoreToUnlock = parseInt(container.dataset.scoreToUnlock);
 
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (score >= scoreToUnlock) {
       unlockGame(gameId);
       container.innerHTML = `
-        <h2>🎉 ¡Juego desbloqueado!</h2>
+        <h2 class="game-quiz__title">🎉 ¡Juego desbloqueado!</h2>
         <a href="/${game.idalt}">Ir a los detalles del juego</a>
       `;
       return;
@@ -34,24 +34,24 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (lives <= 0) {
       container.innerHTML = `
-        <h2>💀 Perdiste. Inténtalo de nuevo.</h2>
-        <button onclick="location.reload()">Reiniciar</button>
+        <h2 class="game-quiz__game-over">💀 Perdiste. Inténtalo de nuevo.</h2>
+        <button class="game-quiz__restart-button btn btn-secondary" onclick="location.reload()">Reiniciar</button>
       `;
       return;
     }
 
     const question = questions[currentIndex];
     container.innerHTML = `
-      <h3>${question.question}</h3>
-      <ul>
+      <h3 class="game-quiz__question">${question.question}</h3>
+      <div class="game-quiz__options">
         ${question.options.map(option => `
-          <li><button class="btn option-btn">${option}</button></li>
+        <button class="game-quiz__option btn">${option}</button>
         `).join("")}
-      </ul>
+      </div>
       <p>Puntaje: ${score} | Vidas: ${lives}</p>
     `;
 
-    document.querySelectorAll(".option-btn").forEach(btn => {
+    document.querySelectorAll(".game-quiz__option").forEach(btn => {
       btn.addEventListener("click", () => {
         if (btn.textContent === question.answer) {
           score++;
