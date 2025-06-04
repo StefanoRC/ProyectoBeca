@@ -4,46 +4,46 @@ import { games } from "../data/games.js";
 ---
 
 <MainLayout title="GamesQuiz">
-  <header>
-    <h1>GamesQuiz</h1>
-    <button id="menu-toggle" class="menu-button">☰</button>
-    <nav id="mobile-menu" class="hidden">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/userRegister">Register/Login</a></li>
-        <li><a href="#catalog">Catálogo</a></li>
-        <li><a href="/contact">Contacto</a></li>
+  <header class="header">
+    <h1 class="header__title">GamesQuiz</h1>
+    <button class="header__menu-button">☰</button>
+    <nav class="header__nav header__nav--hidden">
+      <ul class="header__nav-list">
+        <li class="header__nav-item"><a href="/" class="header__nav-link">Home</a></li>
+        <li class="header__nav-item"><a href="/userRegister" class="header__nav-link">Register/Login</a></li>
+        <li class="header__nav-item"><a href="#catalog" class="header__nav-link">Catálogo</a></li>
+        <li class="header__nav-item"><a href="/contact" class="header__nav-link">Contacto</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section>
-    <h2>🎮 Bienvenido a GamesQuiz</h2>
-    <p>GamesQuiz es un desafio donde pondrás a prueba tus conocimientos sobre videojuegos y lograras desbloquear mas desafios a medida que avances. Ve por un buen cafe y comienza a demostrar tu valia gamer!</p>
+  <main class="main">
+    <section class="main__intro">
+      <h2 class="main__intro-title">🎮 Bienvenido a GamesQuiz</h2>
+      <p class="main__description">GamesQuiz es un desafio donde pondrás a prueba tus conocimientos sobre videojuegos y lograras desbloquear mas desafios a medida que avances. Ve por un buen cafe y comienza a demostrar tu valia gamer!</p>
     </section>
 
-    <section>
-    <h3>📜 Reglas del juego</h3>
-    <ul>
-      <li>Responde correctamente las preguntas para ganar puntos.</li>
-      <li>Necesitás alcanzar el puntaje mínimo para desbloquear cada juego.</li>
-      <li>Si pierdes todas tus vidas, no te preocupes, puedes intentarlo otra vez. Advertencia: No esta permitido buscar en Google. Recuerda que Dios lo ve todo XD.</li>
-    </ul>
+    <section class="main__rules">
+      <h3 class="main__subtitle">📜 Reglas del juego</h3>
+      <ul class="main__rules-list">
+        <li class="main__rules-item">Responde correctamente las preguntas para ganar puntos.</li>
+        <li class="main__rules-item">Necesitás alcanzar el puntaje mínimo para desbloquear cada juego.</li>
+        <li class="main__rules-item">Si pierdes todas tus vidas, no te preocupes, puedes intentarlo otra vez. Advertencia: No esta permitido buscar en Google. Recuerda que Dios lo ve todo XD.</li>
+      </ul>
     </section>
 
-    <section>
-      <h3>📦 Catálogo de Juegos</h3>
-      <div id="catalog" class="card_container">
+    <section class="main__catalog-section">
+      <h3 class="main__subtitle">📦 Catálogo de Juegos</h3>
+      <div class="main__catalog-div" id="catalog">
         {games.map(game => (
-          <div class="card"  data-game-id={game.id} data-game-idalt={game.idalt}>
-            <div>
-              <img src={game.image} alt={game.name} />
-              <a class="btn_anchor" href={`/${game.id}`}>
-                <button class="btn card_item">Jugar</button>
+          <div class="catalog__card"  data-game-id={game.id} data-game-idalt={game.idalt}>
+            <div class="catalog__image-container">
+              <img src={game.image} alt={game.name} class="catalog__image"/>
+              <a class="catalog__link" href={`/${game.id}`}>
+                <button class="catalog__button btn">Jugar</button>
               </a>
             </div>
-            <p class="card_item">Valor: {game.scoreToUnlock} créditos</p>
+            <p class="catalog__score">Valor: {game.scoreToUnlock} créditos</p>
           </div>
         ))}
       </div>
@@ -51,20 +51,20 @@ import { games } from "../data/games.js";
   </main>
   
   <footer>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="/contact">Contact</a></li>
+    <nav class="footer__nav">
+      <ul class="footer__nav-list">
+        <li class="footer__nav-item"><a href="/" class="footer__nav-link">Home</a></li>
+        <li class="footer__nav-item"><a href="#about" class="footer__nav-link">About</a></li>
+        <li class="footer__nav-item"><a href="/contact" class="footer__nav-link">Contact</a></li>
       </ul>
     </nav>
-    <p>&copy; 2025 GamesQuiz</p>
+    <p class="footer__copy">&copy; 2025 GamesQuiz</p>
   </footer>
     <script type="module">
       document.addEventListener("DOMContentLoaded", () => {
         const unlockedGames = JSON.parse(localStorage.getItem("unlockedGames") || "[]");
 
-        document.querySelectorAll(".card").forEach(card => {
+        document.querySelectorAll(".catalog__card").forEach(card => {
           const gameId = card.dataset.gameId;
           const gameIdAlt = card.dataset.gameIdalt;
           if (unlockedGames.includes(gameId)) {
@@ -81,59 +81,19 @@ import { games } from "../data/games.js";
 
 <style>
   /* SEMANTICS */
-    body {
-    margin: 0;
-    background-color: var(--bg-color);
-    color: var(--text);
+  body {
     display: grid;
-    grid-template-rows: auto 1fr auto; /* ✅ Esto lo organiza en filas */
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
       "header"
       "main"
-      "footer"; /* ✅ Ajuste aquí */
-    height: 100vh;
+      "footer";
     font-size: x-large;
-  }
-
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: oklch(0.21 0.1209 279.86);
-    box-shadow: var(--shadow);
-    grid-area: header;
-  }
-
-  footer {
-    grid-area: footer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    background-color: oklch(0.21 0.1209 279.86);
-    box-shadow: var(--shadow);
-    flex-direction: column;
-  }
-
-  section {
-    border: 1px solid var(--primary);
-    padding: 1rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    margin: 1rem;
-    background-color: oklch(0.21 0.1209 279.86);
   }
 
   /* CARDS */
 
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .card_container {
+  .main__catalog-div {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -141,7 +101,7 @@ import { games } from "../data/games.js";
     justify-content: center;
   }
 
-  .card {
+  .catalog__card {
     background: #111;
     border: 1px solid var(--primary);
     border-radius: var(--radius);
@@ -156,28 +116,28 @@ import { games } from "../data/games.js";
     transform: scale(0.95);
   }
 
-  .card:hover {
+  .catalog__card:hover {
     transform: scale(1);
     transition: all 0.2s ease-in-out;
   }
 
-  .card img {
+  .catalog__image {
     border-radius: var(--radius) var(--radius) 0 0;
     width: 100%;
     height: auto;
     margin: 0;
   }
 
-  .card_item {
+  .catalog__button, .catalog__score {
     margin: 5px;
     padding: 5px;
   }
 
-  .card div {
+  .catalog__image-container {
     position: relative;
   }
 
-  .card .btn_anchor {
+  .catalog__link {
     position: absolute;
     border: none;
     opacity: 0;
@@ -190,53 +150,56 @@ import { games } from "../data/games.js";
     width: auto;
   }
 
-  .card:hover .btn_anchor {
+  .catalog__card:hover .catalog__link {
     transition: all 0.2s ease-in-out;
     opacity: 1;
     bottom: 5%;
   }
 
   /* MENU */
-  .menu-button {
-  font-size: 2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
+  .header__menu-button {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--primary);
+  }
 
-#mobile-menu {
-  position: absolute;
-  top: 120px;
-  left: 0;
-  width: 100%;
-  background: var(--bg-color);
-  padding: 1rem;
-  display: none;
-  flex-direction: column;
-  z-index: 10;
-}
+  .header__nav {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    width: 97%;
+    background: var(--bg-color);
+    padding: 1rem;
+    display: none;
+    flex-direction: column;
+    z-index: 10;
+    overflow-x: hidden;
+    margin: 0;
+  }
 
-#mobile-menu ul {
-  list-style: none;
-  padding: 0;
-}
+  .header__nav-list {
+    list-style: none;
+    padding: 0;
+  }
 
-#mobile-menu li {
-  padding: 10px;
-}
+  .header__nav-item {
+    padding: 10px;
+  }
 </style>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const menu = document.getElementById("mobile-menu");
-  const toggleBtn = document.getElementById("menu-toggle");
+  const menu = document.querySelector(".header__nav") as HTMLElement;
+  const toggleBtn = document.querySelector(".header__menu-button");
 
   toggleBtn.addEventListener("click", () => {
-    if (menu.classList.contains("hidden")) {
-      menu.classList.remove("hidden");
+    if (menu.classList.contains("header__nav--hidden")) {
+      menu.classList.remove("header__nav--hidden");
       menu.style.display = "block";
     } else {
-      menu.classList.add("hidden");
+      menu.classList.add("header__nav--hidden");
       menu.style.display = "none";
     }
   });

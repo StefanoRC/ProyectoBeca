@@ -122,8 +122,8 @@ transform: skewX(-45deg) scale(1, 1);
 transition: all 0.5s;
 }
 
-.option-btn{
-width: 90%;
+.game-quiz__option{
+width: 100%;
 text-align: center;
 color: var(--accent);
 }
@@ -185,4 +185,10 @@ color: black;
 .badge-warning {
 background: var(--warning);
 color: black;
+}
+
+.game-quiz__options{
+display: flex;
+flex-direction: column;
+align-items: center;
 }
