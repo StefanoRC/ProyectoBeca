@@ -6,6 +6,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   const { games } = await import("../../src/data/games.js");
   const game = games.find(g => g.id === gameId);
 
+  const unlocked = JSON.parse(localStorage.getItem("unlockedGames") || "[]");
+  if (unlocked.includes(gameId)) {
+    container.innerHTML = `
+      <h2>✅ Ya desbloqueaste este juego.</h2>
+      <a href="/${game.idalt}">Ir a los detalles del juego</a>
+    `;
+    return;
+  }
+
+
+
   let score = 0;
   let lives = 3;
   let questions = [...game.questions].sort(() => Math.random() - 0.5);
@@ -16,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       unlockGame(gameId);
       container.innerHTML = `
         <h2>🎉 ¡Juego desbloqueado!</h2>
-        <a href="/biblioteca">Ir a la Biblioteca</a>
+        <a href="/${game.idalt}">Ir a los detalles del juego</a>
       `;
       return;
     }

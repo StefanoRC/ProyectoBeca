@@ -2,8 +2,17 @@
 export const games = [
   {
     id: "minecraft",
+    idalt: "minecraft_detail",
     name: "Minecraft",
     image: "/assets/img/minecraft-cover.jpg",
+    description: "Minecraft es un juego de construcción, aventura y supervivencia en un mundo abierto compuesto por bloques. Los jugadores pueden explorar, recolectar recursos, construir estructuras y enfrentarse a criaturas hostiles.",
+    dateOfRelease: "2011-11-18",
+    genre: "Sandbox, Supervivencia, Aventura",
+    developer: "Mojang Studios",
+    publisher: "Mojang Studios",
+    platforms: ["PC", "Xbox", "PlayStation", "Nintendo Switch", "Mobile"],
+    website: "https://www.minecraft.net/",
+    trailer: "https://www.youtube.com/watch?v=MmB9b5njVbA", 
     scoreToUnlock: 12,
     questions: [
       {
@@ -96,9 +105,18 @@ export const games = [
   
   {
     id: "warcraft3",
+    idalt: "warcraft3_detail",
     name: "Warcraft 3",
     image: "/assets/img/warcraft3-cover.jpg",
-    scoreToUnlock: 12,
+    description: "Warcraft 3 es un juego de estrategia en tiempo real que narra la lucha entre varias razas fantásticas por el control del mundo de Azeroth. Incluye campañas épicas, multijugador y un editor de mapas.",
+    dateOfRelease: "2002-07-03",
+    genre: "Estrategia en tiempo real (RTS)",
+    developer: "Blizzard Entertainment",
+    publisher: "Blizzard Entertainment",
+    platforms: ["PC", "Mac"],
+    website: "https://classic.blizzard.com/es-mx/warcraft3/",
+    trailer: "https://www.youtube.com/watch?v=Rla3FUlxJdE",
+    scoreToUnlock: 8,
     questions: [
       {
         question: "¿Quién es el líder de los Orcos en Warcraft 3?",
@@ -190,8 +208,17 @@ export const games = [
 
   {
     id: "pokemon-go",
+    idalt: "pokemon-go_detail",
     name: "Pokémon GO",
     image: "/assets/img/pokemon-go-cover.jpg",
+    description: "Pokémon GO es un juego de realidad aumentada donde los jugadores capturan Pokémon en el mundo real usando dispositivos móviles y GPS.",
+    dateOfRelease: "2016-07-06",
+    genre: "Realidad Aumentada, Aventura",
+    developer: "Niantic",
+    publisher: "Niantic",
+    platforms: ["Mobile"],
+    website: "https://pokemongolive.com/",
+    trailer: "https://www.youtube.com/watch?v=2sj2iQyBTQs",
     scoreToUnlock: 12,
     questions: [
       {
@@ -284,9 +311,18 @@ export const games = [
 
   {
     id: "the-last-of-us",
+    idalt: "the-last-of-us_detail",
     name: "The Last of Us",
     image: "/assets/img/the-last-of-us-cover.webp",
-    scoreToUnlock: 12,
+    description: "The Last of Us es un videojuego de acción y aventura centrado en la supervivencia en un mundo postapocalíptico lleno de amenazas humanas e infectadas.",
+    dateOfRelease: "2013-06-14",
+    genre: "Acción, Aventura, Supervivencia",
+    developer: "Naughty Dog",
+    publisher: "Sony Computer Entertainment",
+    platforms: ["PlayStation", "PC"],
+    website: "https://www.playstation.com/the-last-of-us/",
+    trailer: "https://www.youtube.com/watch?v=W01L70IGBgE",
+    scoreToUnlock: 10,
     questions: [
       {
         question: "¿Cómo se llaman los dos protagonistas principales de The Last of Us Part I?",
@@ -378,9 +414,18 @@ export const games = [
 
   {
     id: "god-of-war-ragnarok",
+    idalt: "god-of-war-ragnarok_detail",
     name: "God of War Ragnarök",
     image: "/assets/img/god-of-war-ragnarok-cover.jpg",
-    scoreToUnlock: 12,
+    description: "God of War Ragnarök es un juego de acción y aventura que continúa la historia de Kratos y Atreus en la mitología nórdica.",
+    dateOfRelease: "2022-11-09",
+    genre: "Acción, Aventura",
+    developer: "Santa Monica Studio",
+    publisher: "Sony Interactive Entertainment",
+    platforms: ["PlayStation"],
+    website: "https://www.playstation.com/god-of-war-ragnarok/",
+    trailer: "https://www.youtube.com/watch?v=EE-4GvjKcfs",
+    scoreToUnlock: 8,
     questions: [
       {
         question: "¿Cuál es el nombre del lobo gigante que acompaña a Kratos y Atreus al principio del juego?",
@@ -472,9 +517,18 @@ export const games = [
 
   {
     id: "darksouls-3",
+    idalt: "darksouls-3_detail",
     name: "Dark Souls III",
     image: "/assets/img/darksouls-3-cover.jpg",
-    scoreToUnlock: 12,
+    description: "Dark Souls III es un juego de rol de acción conocido por su dificultad, ambientación oscura y combates desafiantes.",
+    dateOfRelease: "2016-03-24",
+    genre: "RPG, Acción, Aventura",
+    developer: "FromSoftware",
+    publisher: "Bandai Namco Entertainment",
+    platforms: ["PC", "Xbox", "PlayStation"],
+    website: "https://www.darksouls3.com/",
+    trailer: "https://www.youtube.com/watch?v=cWBwFhUv1-8",
+    scoreToUnlock: 8,
     questions: [
       {
         question: "¿Cuál es el título del protagonista de Dark Souls III?",
@@ -566,9 +620,18 @@ export const games = [
 
   {
     id: "stardew-valley",
+    idalt: "stardew-valley_detail",
     name: "Stardew Valley",
     image: "/assets/img/stardew-valley-cover.jpg",
-    scoreToUnlock: 12,
+    description: "Stardew Valley es un juego de simulación agrícola en el que los jugadores cultivan, pescan, crían animales y forman relaciones con los habitantes del pueblo.",
+    dateOfRelease: "2016-02-26",
+    genre: "Simulación, Rol",
+    developer: "ConcernedApe",
+    publisher: "ConcernedApe",
+    platforms: ["PC", "Xbox", "PlayStation", "Nintendo Switch", "Mobile"],
+    website: "https://www.stardewvalley.net/",
+    trailer: "https://www.youtube.com/watch?v=ot7uXNQskhs",
+    scoreToUnlock: 10,
     questions: [
       {
         question: "¿Cuál es el nombre del abuelo que le deja la granja al jugador?",
@@ -660,9 +723,18 @@ export const games = [
 
   {
     id: "uncharted",
+    idalt: "uncharted_detail",
     name: "Uncharted",
     image: "/assets/img/uncharted-cover.webp",
-    scoreToUnlock: 12,
+    description: "Uncharted es una serie de juegos de acción y aventura que sigue las exploraciones del cazador de tesoros Nathan Drake en busca de misterios históricos.",
+    dateOfRelease: "2007-11-19",
+    genre: "Acción, Aventura",
+    developer: "Naughty Dog",
+    publisher: "Sony Interactive Entertainment",
+    platforms: ["PlayStation", "PC"],
+    website: "https://www.playstation.com/uncharted/",
+    trailer: "https://www.youtube.com/watch?v=hh5HV4iic1Y",
+    scoreToUnlock: 10,
     questions: [
       {
         question: "¿Cuál es el nombre completo del protagonista de la saga Uncharted?",
@@ -754,9 +826,18 @@ export const games = [
 
   {
     id: "dragon-ball-sparking-zero",
+    idalt: "dragon-ball-sparking-zero_detail",
     name: "Dragon Ball Sparking! ZERO",
     image: "/assets/img/dragon-ball-sparking-zero-cover.jpg",
-    scoreToUnlock: 12,
+    description: "Dragon Ball Sparking! ZERO es un juego de lucha basado en el universo de Dragon Ball, ofreciendo combates intensos y fieles al anime.",
+    dateOfRelease: "2024",
+    genre: "Lucha, Acción",
+    developer: "Spike Chunsoft",
+    publisher: "Bandai Namco Entertainment",
+    platforms: ["PC", "Xbox", "PlayStation"],
+    website: "https://www.bandainamcoent.com/games/dragon-ball-sparking-zero",
+    trailer: "https://www.youtube.com/watch?v=Q36C0Z5-dqA",
+    scoreToUnlock: 10,
     questions: [
       {
         question: "¿Cuál es la serie de juegos de la que 'Dragon Ball Sparking! ZERO' es el sucesor espiritual?",
