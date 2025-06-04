@@ -12,7 +12,6 @@ const {
 ---
 
 <MainLayout title={windowTitle}>
-  <div class="form-container">
     <h1 class="form-title">{title}</h1>
     <form
       id="register"
@@ -26,7 +25,6 @@ const {
       <button type="submit">{buttonText}</button>
       <div id="form-feedback"></div>
     </form>
-  </div>
 
   <script>
     try {
@@ -139,13 +137,10 @@ const {
 
     .form-title {
       width: 100%;
-      max-width: 1000px; /* igual que el form */
-      margin: 2rem auto 0 auto;
+      max-width: 1000px;
       text-align: center;
-      font-size: 2.5rem;
-      font-weight: 700;
+      font-size: 3rem;
       color: var(--primary);
-      letter-spacing: 1px;
       display: block;
     }
   </style>
