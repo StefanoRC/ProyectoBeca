@@ -27,25 +27,37 @@ import FormUser from "./components/formUser.astro";
       <input type="text" name="user" required />
     </div>
 
-    <div class="form-group"></div>
-    <label for="password">Contraseña</label>
-    <input type="password" name="password" required />
+    <div class="form-group">
+      <label for="password">Contraseña</label>
+      <input type="password" name="password" required />
     </div>
   </div>
 </FormUser>
 
 <style>
   body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.form-fields {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
-}
+  .form-fields {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+  }
 
+  .form-group input {
+    width: 100%;
+    padding: 1em;
+    border-radius: 30px;
+    border: 1px solid var(--primary);
+    background: var(--accent);
+    color: var(--text);
+    font-size: 3rem;
+    box-sizing: border-box;
+  }
+
+  
 </style>
