@@ -1,7 +1,9 @@
 ---
 import MainLayout from "../layouts/mainLayout.astro";
 import FormUser from "./components/formUser.astro";
+import MatiasBio from "./matiasBio.astro";
 import StefanoBio from "./stefanoBio.astro";
+import GabrielBio from "./gabrielBio.astro";
 ---
 
 <MainLayout title={"Contacto"}>
@@ -16,12 +18,19 @@ import StefanoBio from "./stefanoBio.astro";
   </p>
   <section>
     <h1>¿Quienes somos?</h1>
-    <p>Somos un grupo de 4 personas, cursamos el trayecto de programador full stack en la Beca Integrar Tec, este e sunuestro primer proyecto, les dejemaos
-      el nombre de cada integrante para que puedan contactarse o conocer un poco mas sobre nosotros</p>
-    <a href="#" id="open-modal">Stefano Reaño</a>
+    <p>
+      Somos un grupo de 4 personas, cursamos el trayecto de programador full
+      stack en la Beca Integrar Tec, este e sunuestro primer proyecto, les
+      dejemaos el nombre de cada integrante para que puedan contactarse o
+      conocer un poco mas sobre nosotros
+    </p>
+    <a href="#" id="open-modal-stefano">Stefano Reaño</a>
+    <a href="#" id="open-modal-matias">Matias Ezequiel</a>
+    <a href="#" id="open-modal-gabriel">Gabriel Ledesma </a>
   </section>
-  <StefanoBio id="modal-stefano">
-  </StefanoBio>
+  <StefanoBio id="modal-stefano" />
+  <MatiasBio id="modal-matias" />
+  <GabrielBio id="modal-gabriel" />
   <footer>
     <FormUser
       title="Deja tu mensaje"
@@ -43,15 +52,37 @@ import StefanoBio from "./stefanoBio.astro";
 </MainLayout>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const open = document.getElementById("open-modal");
-    const modal = document.getElementById("modal-stefano");
-    const close = modal.querySelector("#close-modal");
-    open.addEventListener("click", (e) => {
+    const openStefano = document.getElementById("open-modal-stefano");
+    const modalStefano = document.getElementById("modal-stefano");
+    const closeStefano = document.getElementById("close-modal-stefano");
+    openStefano.addEventListener("click", (e) => {
       e.preventDefault();
-      modal.style.display = "flex";
+      modalStefano.style.display = "flex";
     });
-    close.addEventListener("click", () => {
-      modal.style.display = "none";
+    closeStefano.addEventListener("click", () => {
+      modalStefano.style.display = "none";
     });
+
+    const openMatias = document.getElementById("open-modal-matias");
+    const modalMatias = document.getElementById("modal-matias");
+    const closeMatias = document.getElementById("close-modal-matias");
+    openMatias.addEventListener("click", (e) => {
+      e.preventDefault();
+      modalMatias.style.display = "flex";
+    });
+    closeMatias.addEventListener("click", (e) => {
+      modalMatias.style.display = "none";
+    });
+
+    const openGabriel = document.getElementById("open-modal-gabriel");
+    const modalGabriel = document.getElementById("modal-gabriel");
+    const closeGabriel = document.getElementById("close-modal-gabriel");
+    openGabriel.addEventListener("click", (e) => {
+      e.preventDefault();
+      modalGabriel.style.display = "flex";
+    })
+    closeGabriel.addEventListener("click", (e) => {
+      modalGabriel.style.display = "none";
+    })
   });
 </script>
