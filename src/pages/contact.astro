@@ -7,23 +7,19 @@ import GabrielBio from "./gabrielBio.astro";
 ---
 
 <MainLayout title={"Contacto"}>
-  <h1>Contactanos</h1>
+  <h1>¿Quienes somos?</h1>
   <img
     src="../../public/assets/img/Logo-integrar-01.png"
     alt="Imagen de contacto"
   />
   <p>
-    Mediante este formulario podes contactarte con los desarrolladores de esta
-    web, solo con tu nombre y email, no dudes en dejanos tu mensaje
+    Somos un grupo de 3 personas, cursamos el trayecto de programador full stack
+    en la Beca Integrar Tec, este es nuestro primer proyecto, les dejemaos el
+    nombre de cada integrante para que puedan contactarse o conocer un poco mas
+    sobre nosotros, aceptamos en la caja de comentarios cualquier consejo que
+    nos ayude a mejorar
   </p>
-  <section>
-    <h1>¿Quienes somos?</h1>
-    <p>
-      Somos un grupo de 4 personas, cursamos el trayecto de programador full
-      stack en la Beca Integrar Tec, este e sunuestro primer proyecto, les
-      dejemaos el nombre de cada integrante para que puedan contactarse o
-      conocer un poco mas sobre nosotros
-    </p>
+  <section class="members">
     <a href="#" id="open-modal-stefano">Stefano Reaño</a>
     <a href="#" id="open-modal-matias">Matias Ezequiel</a>
     <a href="#" id="open-modal-gabriel">Gabriel Ledesma </a>
@@ -31,6 +27,7 @@ import GabrielBio from "./gabrielBio.astro";
   <StefanoBio id="modal-stefano" />
   <MatiasBio id="modal-matias" />
   <GabrielBio id="modal-gabriel" />
+  <h1>Contactanos</h1>
   <footer>
     <FormUser
       title="Deja tu mensaje"
@@ -80,9 +77,23 @@ import GabrielBio from "./gabrielBio.astro";
     openGabriel.addEventListener("click", (e) => {
       e.preventDefault();
       modalGabriel.style.display = "flex";
-    })
+    });
     closeGabriel.addEventListener("click", (e) => {
       modalGabriel.style.display = "none";
-    })
+    });
   });
 </script>
+<style>
+  .members {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 300px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border-radius: 8px;
+    background: #181818;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+</style>
