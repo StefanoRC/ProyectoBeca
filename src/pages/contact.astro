@@ -8,16 +8,11 @@ import GabrielBio from "./gabrielBio.astro";
 
 <MainLayout title={"Contacto"}>
   <h1>¿Quienes somos?</h1>
-  <img
-    src="../../public/assets/img/Logo-integrar-01.png"
-    alt="Imagen de contacto"
-  />
-  <p>
-    Somos un grupo de 3 personas, cursamos el trayecto de programador full stack
-    en la Beca Integrar Tec, este es nuestro primer proyecto, les dejemaos el
-    nombre de cada integrante para que puedan contactarse o conocer un poco mas
-    sobre nosotros, aceptamos en la caja de comentarios cualquier consejo que
-    nos ayude a mejorar
+  <p class="intro">
+    ¡Bienvenido a nuestro primer proyecto full stack! 🚀 Somos un equipo
+    apasionado por la tecnología y el aprendizaje continuo. Aquí podrás
+    contactarnos, conocer más sobre nosotros y dejar tus sugerencias para seguir
+    mejorando. ¡Gracias por visitar nuestra web y ser parte de este camino! 💡🤝
   </p>
   <section class="members">
     <a href="#" id="open-modal-stefano">Stefano Reaño</a>
@@ -91,6 +86,26 @@ import GabrielBio from "./gabrielBio.astro";
   });
 </script>
 <style>
+  h1 {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--primary);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .intro {
+    max-width: 1000px;
+    margin: 1.5rem auto;
+    text-align: center;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+  }
+
   .members {
     display: flex;
     flex-direction: column;
@@ -115,20 +130,19 @@ import GabrielBio from "./gabrielBio.astro";
     display: flex;
     flex-direction: row;
     gap: 2em;
-    justify-content: center;
     width: 100%;
   }
 
   .form-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 180px;
-  flex: 1 1 0;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 180px;
+    flex: 1 1 0;
+  }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-}
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+  }
 </style>
