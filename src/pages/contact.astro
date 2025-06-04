@@ -1,35 +1,147 @@
 ---
 import MainLayout from "../layouts/mainLayout.astro";
 import FormUser from "./components/formUser.astro";
+import MatiasBio from "./matiasBio.astro";
+import StefanoBio from "./stefanoBio.astro";
+import GabrielBio from "./gabrielBio.astro";
 ---
 
 <MainLayout title={"Contacto"}>
-  <h1>¿Quienes Somos?</h1>
-  <img
-    src="../../public/assets/img/Logo-integrar-01.png"
-    alt="Imagen de contacto"
-  />
-  <p>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium quos
-    quo ducimus, autem, maxime suscipit unde placeat, cumque exercitationem
-    aliquam laudantium blanditiis iste sapiente non illo commodi optio eaque a.
+  <h1>¿Quienes somos?</h1>
+  <p class="intro">
+    ¡Bienvenido a nuestro primer proyecto full stack! 🚀 Somos un equipo
+    apasionado por la tecnología y el aprendizaje continuo. Aquí podrás
+    contactarnos, conocer más sobre nosotros y dejar tus sugerencias para seguir
+    mejorando. ¡Gracias por visitar nuestra web y ser parte de este camino! 💡🤝
   </p>
+  <section class="members">
+    <a href="#" id="open-modal-stefano">Stefano Reaño</a>
+    <a href="#" id="open-modal-matias">Matias Ezequiel</a>
+    <a href="#" id="open-modal-gabriel">Gabriel Ledesma </a>
+  </section>
+  <StefanoBio id="modal-stefano" />
+  <MatiasBio id="modal-matias" />
+  <GabrielBio id="modal-gabriel" />
+  <h1>Contactanos</h1>
   <footer>
     <FormUser
-      title="Contacto"
+      title="Deja tu mensaje"
       buttonText={"Enviar mensaje"}
       successMessage="Mensaje enviado con exito"
       errorMessage="Error al enviar el mensaje"
       storageKey="contactData"
       validateDuplicates={false}
     >
-      <label for="name">Nombre:</label>
-      <input type="text" name="name" required />
-
-      <label for="email">Email</label>
-      <input type="email" name="email" required />
-
-      <textarea name="text_area" id="">Escribí tu mensaje</textarea>
+      <div class="form-fields">
+        <div class="form-group">
+          <label for="name">Nombre:</label>
+          <input type="text" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="text_Area">Mensaje</label>
+          <textarea name="text_area" id="">Escribí tu mensaje</textarea>
+        </div>
+      </div>
     </FormUser>
   </footer>
 </MainLayout>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const openStefano = document.getElementById("open-modal-stefano");
+    const modalStefano = document.getElementById("modal-stefano");
+    const closeStefano = document.getElementById("close-modal-stefano");
+    openStefano.addEventListener("click", (e) => {
+      e.preventDefault();
+      modalStefano.style.display = "flex";
+    });
+    closeStefano.addEventListener("click", () => {
+      modalStefano.style.display = "none";
+    });
+
+    const openMatias = document.getElementById("open-modal-matias");
+    const modalMatias = document.getElementById("modal-matias");
+    const closeMatias = document.getElementById("close-modal-matias");
+    openMatias.addEventListener("click", (e) => {
+      e.preventDefault();
+      modalMatias.style.display = "flex";
+    });
+    closeMatias.addEventListener("click", (e) => {
+      modalMatias.style.display = "none";
+    });
+
+    const openGabriel = document.getElementById("open-modal-gabriel");
+    const modalGabriel = document.getElementById("modal-gabriel");
+    const closeGabriel = document.getElementById("close-modal-gabriel");
+    openGabriel.addEventListener("click", (e) => {
+      e.preventDefault();
+      modalGabriel.style.display = "flex";
+    });
+    closeGabriel.addEventListener("click", (e) => {
+      modalGabriel.style.display = "none";
+    });
+  });
+</script>
+<style>
+  h1 {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--primary);
+    text-shadow: 0 2px 8px oklch(0.13 0.0691 279.86 / 0.15);
+  }
+
+  .intro {
+    max-width: 1000px;
+    margin: 1.5rem auto;
+    text-align: center;
+    padding: 1rem 2rem;
+    background: var(--accent);
+    border-radius: 8px;
+  }
+
+  .members {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 300px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .members a {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--primary);
+    text-decoration: underline;
+    text-align: center;
+  }
+
+  .form-fields {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    width: 100%;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 180px;
+    flex: 1 1 0;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+  }
+</style>

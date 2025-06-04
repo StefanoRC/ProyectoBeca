@@ -1,0 +1,50 @@
+<gabrielBio>
+  <div id="modal-gabriel" style="display: none;">
+    <div>
+      <button id="close-modal-gabriel">X</button>
+      <h2>Gabriel Ledesma</h2>
+      <p>Desarrollador web, estudiante y entusiasta de la tecnología.</p>
+      <p>
+        Contacto: <a href="mailto:gabrielledesmadiaz@gmail.com"
+          >gabrielledesmadiaz@gmail.com</a
+        >
+      </p>
+    </div>
+  </div>
+</gabrielBio>
+
+<style>
+  #modal-gabriel {
+    display: none;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+  }
+
+  #modal-gabriel > div {
+    background: var(--bg-color);
+    color: var(--text);
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    min-width: 280px;
+    max-width: 90vw;
+    text-align: center;
+  }
+
+  #close-modal-gabriel {
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  #close-modal-gabriel:hover {
+    color: var(--accent);
+  }
+</style>
