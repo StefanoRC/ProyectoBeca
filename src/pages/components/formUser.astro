@@ -12,19 +12,21 @@ const {
 ---
 
 <MainLayout title={windowTitle}>
-  <form
-    id="register"
-    title="Registro de Usuario"
-    data-success-message={successMessage}
-    data-error-message={errorMessage}
-    data-storage-key={storageKey}
-    data-validate-duplicate={validateDuplicates}
-  >
-    <h1>{title}</h1>
-    <slot />
-    <button type="submit">{buttonText}</button>
-    <div id="form-feedback"></div>
-  </form>
+  <div class="form-container">
+    <h1 class="form-title">{title}</h1>
+    <form
+      id="register"
+      title="Registro de Usuario"
+      data-success-message={successMessage}
+      data-error-message={errorMessage}
+      data-storage-key={storageKey}
+      data-validate-duplicate={validateDuplicates}
+    >
+      <slot />
+      <button type="submit">{buttonText}</button>
+      <div id="form-feedback"></div>
+    </form>
+  </div>
 
   <script>
     try {
@@ -133,6 +135,18 @@ const {
       margin: 3em auto 0 auto;
       background-color: var(--bg-color);
       color: var(--primary);
+    }
+
+    .form-title {
+      width: 100%;
+      max-width: 1000px; /* igual que el form */
+      margin: 2rem auto 0 auto;
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 1px;
+      display: block;
     }
   </style>
 </MainLayout>
