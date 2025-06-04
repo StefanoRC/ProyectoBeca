@@ -23,6 +23,7 @@ const {
     <h1>{title}</h1>
     <slot />
     <button type="submit">{buttonText}</button>
+    <div id="form-feedback"></div>
   </form>
 
   <script>
@@ -33,6 +34,7 @@ const {
         const errorMessage = form.dataset.errorMessage;
         const storageKey = form.dataset.storageKey;
         const validationDuplicates = form.dataset.validateDuplicate === "true";
+        const feedback = document.getElementById("form-feedback");
         form.addEventListener("submit", (e) => {
           e.preventDefault();
           const inputs = form.querySelectorAll("input");
@@ -68,6 +70,8 @@ const {
           }
 
           if (!valid) {
+            feedback.textContent = errorMsg;
+            feedback.style.color = "var(--error)";
             alert(errorMsg);
             return;
           }
@@ -92,13 +96,15 @@ const {
               (user) => user.email == data.email || user.user == data.user
             )
           ) {
-            alert(errorMessage);
+            feedback.textContent = errorMessage;
+            feedback.style.color = "var(--error)";
             return;
           }
 
           users.push(data);
           localStorage.setItem(storageKey, JSON.stringify(users));
-          alert(successMessage);
+          feedback.textContent = successMessage;
+          feedback.style.color = "var(--success)";
           form.reset();
         });
       });
