@@ -37,6 +37,40 @@ const {
           e.preventDefault();
           const inputs = form.querySelectorAll("input");
           const textAreas = form.querySelectorAll("textarea");
+          const emailInput = form.querySelector('input[type="email"]');
+          let valid = true;
+          let errorMsg = "";
+
+          inputs.forEach((input) => {
+            if (!input.value.trim()) {
+              valid = false;
+              errorMsg = "Por favor, completa todos los campos.";
+              input.classList.add("input-error");
+            } else {
+              input.classList.remove("input-error");
+            }
+          });
+
+          textAreas.forEach((textarea) => {
+            if (!textarea.value.trim()) {
+              valid = false;
+              errorMsg = "Por favor, completa todos los campos.";
+              textarea.classList.add("input-error");
+            } else {
+              textarea.classList.remove("input-error");
+            }
+          });
+
+          if (emailInput && !/^[^@]+@[^@]+\.[^@]+$/.test(emailInput.value)) {
+            valid = false;
+            errorMsg = "Por favor, ingresa un email válido.";
+            emailInput.classList.add("input-error");
+          }
+
+          if (!valid) {
+            alert(errorMsg);
+            return;
+          }
 
           const data = {};
           inputs.forEach((input) => {
