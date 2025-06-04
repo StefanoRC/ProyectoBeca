@@ -4,7 +4,43 @@
       <button id="close-modal-stefano">X</button>
       <h2>Stefano Reaño</h2>
       <p>Desarrollador web, estudiante y entusiasta de la tecnología.</p>
-      <p>Contacto: <a href="victorstefanorc@gmail.com">victorstefanorc@gmail.com</a></p>
+      <p>Contacto: <a href="mailto:victorstefanorc@gmail.com">victorstefanorc@gmail.com</a></p>
     </div>
   </div>
 </stefanoBio>
+
+<style>
+  #modal-stefano {
+  display: none;
+  top: 0; left: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+#modal-stefano > div {
+  background: var(--bg-color);
+  color: var(--text);
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+  min-width: 280px;
+  max-width: 90vw;
+  text-align: center;
+}
+
+#close-modal-stefano {
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+#close-modal-stefano:hover {
+  color: var(--accent);
+}
+</style>
