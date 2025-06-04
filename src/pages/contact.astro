@@ -37,13 +37,20 @@ import GabrielBio from "./gabrielBio.astro";
       storageKey="contactData"
       validateDuplicates={false}
     >
-      <label for="name">Nombre:</label>
-      <input type="text" name="name" required />
-
-      <label for="email">Email</label>
-      <input type="email" name="email" required />
-
-      <textarea name="text_area" id="">Escribí tu mensaje</textarea>
+      <div class="form-fields">
+        <div class="form-group">
+          <label for="name">Nombre:</label>
+          <input type="text" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="text_Area">Mensaje</label>
+          <textarea name="text_area" id="">Escribí tu mensaje</textarea>
+        </div>
+      </div>
     </FormUser>
   </footer>
 </MainLayout>
@@ -97,10 +104,31 @@ import GabrielBio from "./gabrielBio.astro";
   }
 
   .members a {
-  margin: 0.5rem 0;
-  font-size: 1.1rem;
-  color: var(--primary);
-  text-decoration: underline;
-  text-align: center;
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--primary);
+    text-decoration: underline;
+    text-align: center;
+  }
+
+  .form-fields {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 180px;
+  flex: 1 1 0;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
 }
 </style>
