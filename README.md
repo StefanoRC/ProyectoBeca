@@ -1,6 +1,6 @@
 # Proyecto Beca IntegrarTec: GameQuiz
 
-## 🚀 Explicacion Breve Del Proyecto:
+## 🚀 Explicacion Breve Del Proyecto
 
 ```text
 Bienvenidos a GameQuiz, un proyecto pensado y ejecutado por alumnos de Beca Integrar Tec.
@@ -18,26 +18,26 @@ que quedo pendiente es poder conectar la cuenta, con el game quiz, y seguir mejo
 
 Instruccion para poder ejecutar nuestro proyecto en tu local
 
-_1_
+_1)_
 `node -version` /-> Verificar si esta node instalado
 Si no esta instalado, [https://nodejs.org/es/download]
 sigue los pasos en tu terminal para tenerlo
 -------------------------------------------------------
 
-_2_
+_2)_
 `git clone https://github.com/StefanoRC/ProyectoBeca`  /-> clona el repositorio en tu terminal, dentro de una carpeta nueva
 -------------------------------------------------------
 
-_3_
+_3)_
 `pnpm install` `npm install` /-> instalar dependencia pnpm o npm
 -------------------------------------------------------
 
-_4_
+_4)_
 `pnpm dev` `npm run dev` /-> ejecutar en tu terminal para poder ver la web
 -------------------------------------------------------
 
-# Integrantes
+# 🧑🧑🧑Integrantes
 
-## Matias Ezequiel Manchula
-## Gabriel Ignacio Ledesma Diaz
-## Victor Stefano Reaño Cholan 
+### Matias Ezequiel Manchula 
+### Gabriel Ignacio Ledesma Diaz
+### Victor Stefano Reaño Cholan 
