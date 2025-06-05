@@ -1,0 +1,66 @@
+---
+const { title } = Astro.props;
+---
+
+  <header class="header">
+    <h1 class="header__title">GamesQuiz</h1>
+    <button class="header__menu-button">☰</button>
+    <nav class="header__nav header__nav--hidden">
+      <ul class="header__nav-list">
+        <li class="header__nav-item nav-item__home"><a href="/" class="header__nav-link">Home</a></li>
+        <li class="header__nav-item nav-item__register"><a href="/userRegister" class="header__nav-link">Register/Login</a></li>
+        <li class="header__nav-item nav-item__contact"><a href="/contact" class="header__nav-link">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+    <slot />
+
+  <footer>
+    <nav class="footer__nav">
+      <ul class="footer__nav-list">
+        <li class="footer__nav-item nav-item__home"><a href="/" class="footer__nav-link">Home</a></li>
+        <li class="footer__nav-item nav-item__about"><a href="/contact#about" class="footer__nav-link">About</a></li>
+        <li class="footer__nav-item nav-item__contact"><a href="/contact" class="footer__nav-link">Contact</a></li>
+      </ul>
+    </nav>
+    <p class="footer__copy">&copy; 2025 GamesQuiz</p>
+  </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const menu = document.querySelector(".header__nav") as HTMLElement;
+  const toggleBtn = document.querySelector(".header__menu-button");
+
+  toggleBtn.addEventListener("click", () => {
+    if (menu.classList.contains("header__nav--hidden")) {
+      menu.classList.remove("header__nav--hidden");
+      menu.style.display = "block";
+    } else {
+      menu.classList.add("header__nav--hidden");
+      menu.style.display = "none";
+    }
+  });
+
+  if (window.location.pathname === "/") {
+    const navItemsHome = document.querySelectorAll(".nav-item__home") as NodeListOf<HTMLElement>;
+    navItemsHome.forEach((item) => {
+      item.style.display = "none";
+    });
+  }
+
+  if (window.location.pathname === "/contact") {
+    const navItemsContact = document.querySelectorAll(".nav-item__contact") as NodeListOf<HTMLElement>;
+    const navItemAbout = document.querySelector(".nav-item__about") as HTMLElement;
+    navItemsContact.forEach((item) => {
+      item.style.display = "none";
+    });
+    if (navItemAbout) {
+      navItemAbout.style.display = "none";
+    }
+
+  }
+
+
+});
+</script>

@@ -1,0 +1,197 @@
+---
+import { games } from '../data/games.js'; // ruta según tu estructura
+import MainLayout from "../layouts/mainLayout.astro";
+import BaseLayout from "../layouts/baseLayout.astro";
+
+export async function getStaticPaths() {
+  return games.map(game => ({
+    params: { detail: game.idalt }
+  }));
+}
+
+const { detail } = Astro.params;
+const game = games.find(g => g.idalt === detail);
+
+if (!game) {
+  throw new Error(`Juego con id '${detail}' no encontrado`);
+}
+---
+
+<MainLayout title={game.name}>
+<BaseLayout title="GamesQuiz">
+<section class="game-section" data-game-id={game.id} data-image={game.image}>
+  <h1 class="game__title">{game.name}</h1>
+
+  <div class="game__media">
+    <img class="game__image" src={game.image} alt={game.name} width="500" />
+  </div>
+
+  <div class="game__info">
+    <p class="game__description">{game.description}</p>
+
+    <ul class="game__details">
+      <li class="game__detail"><strong>Fecha de lanzamiento:</strong> {game.dateOfRelease}</li>
+      <li class="game__detail"><strong>Género:</strong> {game.genre}</li>
+      <li class="game__detail"><strong>Desarrollador:</strong> {game.developer}</li>
+      <li class="game__detail"><strong>Distribuidor:</strong> {game.publisher}</li>
+      <li class="game__detail"><strong>Plataformas:</strong> {game.platforms.join(", ")}</li>
+    </ul>
+
+    <div class="game__links">
+      <a class="game__link" href={game.website} target="_blank" rel="noopener noreferrer">
+        Sitio oficial
+      </a>
+      <a class="game__link" href={game.trailer} target="_blank" rel="noopener noreferrer">
+        Ver tráiler en YouTube
+      </a>
+    </div>
+  </div>
+</section>
+
+  </section>
+  <h1 class="locked-message" style="display: none;">
+    No desbloqueaste este juego
+  </h1>
+
+<script type="module" src="/scripts/detailLogic.js"></script>
+<script>
+  function applyMobileBackground() {
+    const isMobile = window.matchMedia("(max-width: 786px)").matches;
+    const section = document.querySelector(".game-section") as HTMLElement;
+
+    if (!section) return;
+
+    const img = section.dataset.image;
+
+    if (isMobile) {
+      section.style.backgroundImage = `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url(${img})`;
+      section.style.backgroundSize = "cover";
+      section.style.backgroundRepeat = "no-repeat";
+      section.style.backgroundPosition = "center";
+
+    } else {
+      section.style.backgroundImage = "none";
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", applyMobileBackground);
+  window.addEventListener("resize", applyMobileBackground);
+
+</script>
+</BaseLayout>
+</MainLayout>
+
+  <style>
+    * {
+      color: var(--text);
+    }
+
+    body {
+      padding-bottom: 1rem;
+    }
+
+    .game-section {
+      max-width: 1000px;
+      margin: 2rem auto 2rem;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      font-family: 'Segoe UI', sans-serif;
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-rows: auto auto auto;
+      grid-template-areas: 
+        "title title"
+        "media info"
+        "media info";
+
+    }
+
+    .game__media {
+      grid-area: media;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .game__info {
+      grid-area: info;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .game__title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      grid-area: title;
+    }
+
+    .game__image {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 1rem;
+      margin: 1.5rem 0;
+      display: block;
+    }
+
+    .game__description {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      color: var(--light-text);
+    }
+
+    .game__details {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 2rem;
+    }
+
+    .game__detail {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      color: var(--light-text);
+    }
+
+    .game__link {
+      color: var(--error);
+      margin: 1rem;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
+    .locked-message {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 1.5rem;
+      color: red;
+    }
+
+/* Responsive */
+
+    /* Mobile */
+    @media screen and (max-width: 786px) {
+      .game-section {
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+          "title"
+          "info"
+          "info";
+/*          background-image: 
+            linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)),
+            url(`${game.image}`);
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center; */
+      }
+      .game__image {
+        display: none;
+      }
+    }
+  </style>

@@ -1,16 +1,222 @@
 ---
-
+import MainLayout from "../layouts/mainLayout.astro";
+import BaseLayout from "../layouts/baseLayout.astro";
+import { games } from "../data/games.js";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title="GamesQuiz">
+  <BaseLayout title="GamesQuiz">
+  <main class="main">
+    <section class="main__intro">
+      <h2 class="main__intro-title">🎮 Bienvenido a GamesQuiz</h2>
+      <p class="main__description">GamesQuiz es un desafio donde pondrás a prueba tus conocimientos sobre videojuegos y lograras desbloquear mas desafios a medida que avances. Ve por un buen cafe y comienza a demostrar tu valia gamer!</p>
+    </section>
+
+    <section class="main__rules">
+      <h3 class="main__subtitle">📜 Reglas del juego</h3>
+      <ul class="main__rules-list">
+        <li class="main__rules-item">- Responde correctamente las preguntas para ganar puntos.</li>
+        <li class="main__rules-item">- Necesitás alcanzar el puntaje mínimo para desbloquear cada juego.</li>
+        <li class="main__rules-item">- Si pierdes todas tus vidas, no te preocupes, puedes intentarlo otra vez. Advertencia: No esta permitido buscar en Google. Recuerda que Dios lo ve todo XD.</li>
+      </ul>
+    </section>
+
+    <section class="main__catalog-section">
+      <h3 class="main__subtitle">📦 Catálogo de Juegos</h3>
+      <div class="main__catalog-div" id="catalog">
+        {games.map(game => (
+          <div class="catalog__card"  data-game-id={game.id} data-game-idalt={game.idalt}>
+            <div class="catalog__image-container">
+              <img src={game.image} alt={game.name} class="catalog__image"/>
+              <a class="catalog__link-play-again" href={`/${game.id}`} style="display: none;">
+                <button class="catalog__button-play-again btn"><img src="playAgainIcon.png" alt="playAgainIcon" class="catalog__button-play-again__image"/></button>
+              </a>
+              <a class="catalog__link" href={`/${game.id}`}>
+                <button class="catalog__button btn">Jugar</button>
+              </a>
+            </div>
+            <p class="catalog__score">Valor: {game.scoreToUnlock} créditos</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    document.addEventListener("DOMContentLoaded", () => {
+      const unlockedGames = JSON.parse(localStorage.getItem("unlockedGames") || "[]");
+
+      document.querySelectorAll(".catalog__card").forEach(card => {
+        const gameId = card.dataset.gameId;
+        const gameIdAlt = card.dataset.gameIdalt;
+        if (unlockedGames.includes(gameId)) {
+          const anchor = card.querySelector(".catalog__link");
+          const button = card.querySelector(".catalog__button");
+          const anchorPlayAgain = card.querySelector(".catalog__link-play-again")
+
+          anchor.href = `/${gameIdAlt}`;
+          button.textContent = "Detalles del juego";
+          anchorPlayAgain.style.display = "block";
+        }
+      });
+    });
+
+    document.querySelectorAll(".catalog__button-play-again").forEach(button => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const card = button.closest(".catalog__card");
+        const gameId = card.dataset.gameId;
+        const gameIdAlt = card.dataset.gameIdalt;
+
+        let unlockedGames = JSON.parse(localStorage.getItem("unlockedGames") || "[]");
+
+        unlockedGames = unlockedGames.filter(id => id !== gameId);
+        localStorage.setItem("unlockedGames", JSON.stringify(unlockedGames));
+
+        window.location.href = `/${gameId}`;
+      });
+    });
+
+
+  </script>
+  </BaseLayout>
+</MainLayout>
+
+<style>
+
+ /* SEMANTICS */
+  body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+  }
+  section {
+    margin: 1rem;
+  }
+  .main__rules-list {
+    padding-left: 5px;
+  }
+
+/* CARDS */
+  .main__catalog-div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .catalog__card {
+    background: #111;
+    border: 1px solid var(--primary);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-template-rows: auto auto;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    overflow: hidden;
+    justify-items: center;
+    align-items: center;
+    transform: scale(0.95);
+  }
+
+  .catalog__card:hover {
+    transform: scale(1);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .catalog__image {
+    border-radius: var(--radius) var(--radius) 0 0;
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
+  .catalog__button, .catalog__score {
+    margin: 5px;
+    padding: 5px;
+  }
+
+  .catalog__image-container {
+    position: relative;
+  }
+
+  .catalog__link {
+    position: absolute;
+    border: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    cursor: pointer;
+    left: 50%;
+    bottom: -5%;
+    transform: translateX(-50%);
+    z-index: auto;
+    width: auto;
+  }
+
+  .catalog__card:hover .catalog__link {
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+    bottom: 5%;
+  }
+
+  .catalog__link-play-again {
+    position: absolute;
+    top: 0;
+  }
+
+/* Responsive */
+
+  /* Mobile */
+  @media screen and (max-width: 480px) {
+    .main__catalog-div {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      justify-content: center;
+    }
+    .catalog__card {
+      width: 100%;
+      max-width: 220px;
+    }
+    .catalog__button, .catalog__score {
+      font-size: 10px;
+    }
+    .catalog__link {
+      opacity: 1 !important;
+    }
+
+    .main__rules-item {
+      font-size: 18px;
+    }
+    .main__subtitle {
+      font-size: 25px;
+    }
+  }
+
+  /* Tablets */
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .catalog__button {
+      font-size: 14px;
+    }
+    .main__catalog-div {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* Desktop */
+  @media screen and (min-width: 1025px) {
+    .main__catalog-div {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      gap: 1rem;
+      justify-content: center;
+    }
+  }
+</style>
