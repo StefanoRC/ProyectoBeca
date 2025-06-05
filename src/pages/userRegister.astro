@@ -1,17 +1,17 @@
 ---
 import FormUser from "./components/formUser.astro";
 ---
+
 <div class="form-container">
-<FormUser
-  title="Registro de Usuario"
-  buttonText="Crear Cuenta"
-  windowTitle="Crear Cuenta"
-  successMessage="Usuario registrado con exito"
-  errorMessage="El usuario o correo ya existen"
-  storageKey="registerData"
-  validateDuplicates={true}
->
-  <div class="form-fields">
+  <FormUser
+    title="Registro de Usuario"
+    buttonText="Registrarse"
+    windowTitle="Crear Cuenta"
+    successMessage="Usuario registrado con exito"
+    errorMessage="El usuario o correo ya existen"
+    storageKey="registerData"
+    validateDuplicates={true}
+  >
     <div class="form-group">
       <label for="name">Nombre</label>
       <input type="text" name="name" required />
@@ -31,8 +31,7 @@ import FormUser from "./components/formUser.astro";
       <label for="password">Contraseña</label>
       <input type="password" name="password" required />
     </div>
-  </div>
-</FormUser>
+  </FormUser>
 </div>
 <style>
   body {
@@ -41,22 +40,19 @@ import FormUser from "./components/formUser.astro";
     justify-content: center;
   }
 
-  .form-fields {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-  }
-
   .form-group input {
     width: 100%;
-    padding: .8em;
-    border-radius: 30px;
+    padding: 0.5em;
+    border-radius: 50px;
     border: 1px solid var(--primary);
     background: var(--accent);
     color: var(--text);
-    font-size: 3rem;
+    font-size: 2rem;
     box-sizing: border-box;
   }
 
+  .form-group label {
+    font-size: 1.5rem;
+    color: var(--text);
+  }
 </style>
