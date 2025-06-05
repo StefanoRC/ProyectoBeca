@@ -119,8 +119,9 @@ const {
   <style>
 
     #register {
-      display: flex;
-      flex-direction: row;
+      display: grid;
+      grid-template-rows: auto auto;
+      grid-template-columns: auto;
       align-items: flex-start;
       justify-content: center;
       margin: 1rem auto;
@@ -138,7 +139,7 @@ const {
 
     .form-fields {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       gap: 2em;
       width: 100%;
     }
@@ -162,6 +163,8 @@ const {
       padding: 10px;
       transition: background 0.2s ease-in-out;
     }
+
+
 
     @media screen and (max-width: 1024px) {
       .form-fields {

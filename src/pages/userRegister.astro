@@ -35,15 +35,20 @@ import FormUser from "./components/formUser.astro";
 </div>
 <style>
   body {
-    display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .form-group {
+    display: grid;
+    gap: 5px;
+    align-content: center;
   }
 
   .form-group input {
     width: 100%;
     padding: 0.5em;
-    border-radius: 50px;
+    border-radius: 10px;
     border: 1px solid var(--primary);
     background: var(--accent);
     color: var(--text);
@@ -55,4 +60,6 @@ import FormUser from "./components/formUser.astro";
     font-size: 1.5rem;
     color: var(--text);
   }
+
+
 </style>
