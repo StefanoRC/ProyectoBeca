@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const gameId = container.dataset.gameId;
   const scoreToUnlock = parseInt(container.dataset.scoreToUnlock);
 
-  const { games } = await import("../../src/data/games.js");
+  const response = await fetch("/data/games.json");
+  const games = await response.json();
   const game = games.find(g => g.id === gameId);
 
   const unlocked = JSON.parse(localStorage.getItem("unlockedGames") || "[]");
@@ -14,8 +15,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     `;
     return;
   }
-
-
 
   let score = 0;
   let lives = 3;
