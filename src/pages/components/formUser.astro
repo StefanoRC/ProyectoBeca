@@ -12,20 +12,26 @@ const {
 ---
 
 <MainLayout title={windowTitle}>
-    <h1 class="form-title">{title}</h1>
-    <form
-      id="register"
-      title="Registro de Usuario"
-      data-success-message={successMessage}
-      data-error-message={errorMessage}
-      data-storage-key={storageKey}
-      data-validate-duplicate={validateDuplicates}
-    >
+  <h1 class="form-title">{title}</h1>
+  <form
+    id="register"
+    title="Registro de Usuario"
+    data-success-message={successMessage}
+    data-error-message={errorMessage}
+    data-storage-key={storageKey}
+    data-validate-duplicate={validateDuplicates}
+  >
+    <div class="form-fields">
       <slot />
-      <button type="submit">{buttonText}</button>
-      <div id="form-feedback"></div>
-    </form>
-
+      <button
+        type="submit"
+        class={`button-sumbit ${Astro.props.buttonClass || ""}`}
+      >
+        {buttonText}
+      </button>
+    </div>
+    <div id="form-feedback" class="form-feedback"></div>
+  </form>
   <script>
     try {
       document.addEventListener("DOMContentLoaded", () => {
@@ -72,7 +78,7 @@ const {
           if (!valid) {
             feedback.textContent = errorMsg;
             feedback.style.color = "var(--error)";
-            alert(errorMsg);
+            console.log(errorMsg);
             return;
           }
 
@@ -109,8 +115,7 @@ const {
         });
       });
     } catch (error) {
-      console.error("ocurrio un error", error);
-      alert("Ocurrio un error, por favor intente nuevamente");
+      console.log("Ocurrio un error, por favor intente nuevamente");
     }
   </script>
 
@@ -120,28 +125,45 @@ const {
       flex-direction: row;
       align-items: flex-start;
       justify-content: center;
-      max-width: 1000px;
       margin: 1rem auto;
       padding: 0.5rem 1rem;
-      background: var(--bg-color);
-      border-radius: 8px;
       gap: 1em;
-    }
-
-    #register button[type="submit"] {
-      display: block;
-      margin: 3em auto 0 auto;
-      background-color: var(--bg-color);
-      color: var(--primary);
     }
 
     .form-title {
       width: 100%;
-      max-width: 1000px;
       text-align: center;
       font-size: 3rem;
       color: var(--primary);
       display: block;
+    }
+
+    .form-fields {
+      display: flex;
+      flex-direction: row;
+      gap: 2em;
+      width: 100%;
+    }
+
+    .form-feedback {
+      min-height: 2em;
+      margin: 1.5em 0 0.5em 0;
+      text-align: center;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      padding: 0.7em 1em;
+    }
+
+    .button-sumbit {
+      cursor: pointer;
+      display: block;
+      width: 30%;
+      background-color: var(--accent);
+      color: var(--text);
+      border-radius: 5px;
+      font-size: 1.5rem;
+      padding: 10px;
+      transition: background 0.2s ease-in-out;
     }
   </style>
 </MainLayout>
