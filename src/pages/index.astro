@@ -28,6 +28,9 @@ import { games } from "../data/games.js";
           <div class="catalog__card"  data-game-id={game.id} data-game-idalt={game.idalt}>
             <div class="catalog__image-container">
               <img src={game.image} alt={game.name} class="catalog__image"/>
+              <a class="catalog__link-play-again" href={`/${game.id}`} style="display: none;">
+                <button class="catalog__button-play-again btn"><img src="playAgainIcon.png" alt="playAgainIcon" class="catalog__button-play-again__image"/></button>
+              </a>
               <a class="catalog__link" href={`/${game.id}`}>
                 <button class="catalog__button btn">Jugar</button>
               </a>
@@ -47,14 +50,35 @@ import { games } from "../data/games.js";
         const gameId = card.dataset.gameId;
         const gameIdAlt = card.dataset.gameIdalt;
         if (unlockedGames.includes(gameId)) {
-          const anchor = card.querySelector("a");
-          const button = card.querySelector("button");
+          const anchor = card.querySelector(".catalog__link");
+          const button = card.querySelector(".catalog__button");
+          const anchorPlayAgain = card.querySelector(".catalog__link-play-again")
 
           anchor.href = `/${gameIdAlt}`;
           button.textContent = "Detalles del juego";
+          anchorPlayAgain.style.display = "block";
         }
       });
     });
+
+    document.querySelectorAll(".catalog__button-play-again").forEach(button => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const card = button.closest(".catalog__card");
+        const gameId = card.dataset.gameId;
+        const gameIdAlt = card.dataset.gameIdalt;
+
+        let unlockedGames = JSON.parse(localStorage.getItem("unlockedGames") || "[]");
+
+        unlockedGames = unlockedGames.filter(id => id !== gameId);
+        localStorage.setItem("unlockedGames", JSON.stringify(unlockedGames));
+
+        window.location.href = `/${gameId}`;
+      });
+    });
+
+
   </script>
   </BaseLayout>
 </MainLayout>
@@ -71,7 +95,7 @@ import { games } from "../data/games.js";
       "footer";
   }
   section {
-    margin: 0.5rem;
+    margin: 1rem;
   }
   .main__rules-list {
     padding-left: 5px;
@@ -139,6 +163,11 @@ import { games } from "../data/games.js";
     transition: all 0.2s ease-in-out;
     opacity: 1;
     bottom: 5%;
+  }
+
+  .catalog__link-play-again {
+    position: absolute;
+    top: 0;
   }
 
 /* Responsive */
