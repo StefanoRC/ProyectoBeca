@@ -1,6 +1,6 @@
 # Proyecto Beca IntegrarTec: GameQuiz
 
-## 🚀 Explicacion Breve Del Proyecto:
+## 🚀 Explicacion Breve Del Proyecto
 
 ```text
 Bienvenidos a GameQuiz, un proyecto pensado y ejecutado por alumnos de Beca Integrar Tec.
@@ -38,4 +38,6 @@ _4)_
 
 # 🧑🧑🧑Integrantes
 
-## Matias Ezequiel Manchula  Gabriel Ignacio Ledesma Diaz  Victor Stefano Reaño Cholan 
+### Matias Ezequiel Manchula 
+### Gabriel Ignacio Ledesma Diaz
+### Victor Stefano Reaño Cholan 
