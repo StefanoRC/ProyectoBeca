@@ -1,47 +1,38 @@
-# Astro Starter Kit: Minimal
+# Proyecto Beca IntegrarTec: GameQuiz
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## 🚀 Explicacion Breve Del Proyecto:
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+Bienvenidos a GameQuiz, un proyecto pensado y ejecutado por alumnos de Beca Integrar Tec.
+
+GameQuiz es nuestra web donde el usuario puede ingresar a un catalogo de juegos, donde podra jugar un quiz
+y probar si en verdad conoce el juego, cada juego tiene un valor de creditos predefinidos, si logras conseguir dichos
+creditos en el GameQuiz, podras acceder a los detalles de dicho juego.
+
+El objetivo de este proyecto es darle al usuario la posibilidad de poner a prueba sus conocimientos.
+Incluimos la seccion de registro para que los users ya puedan tener su cuenta guardada, un objetivo
+que quedo pendiente es poder conectar la cuenta, con el game quiz, y seguir mejorandola indefinidamente
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🧞 Instrucciones De Instalacion
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Instruccion para poder ejecutar nuestro proyecto en tu local
 
-Any static assets, like images, can be placed in the `public/` directory.
+_1_
+`node -version` /-> Verificar si esta node instalado
+-------------------------------------------------------
+Si no esta instalado, [https://nodejs.org/es/download]
+sigue los pasos en tu terminal para tenerlo
 
-## 🧞 Commands
+_2_
+`git clone https://github.com/StefanoRC/ProyectoBeca`  /-> clona el repositorio en tu terminal, dentro de una carpeta nueva
 
-All commands are run from the root of the project, from a terminal:
+_3_
+`pnpm install` `npm install` /-> instalar dependencia pnpm o npm
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+_4_
+`pnpm dev` `npm run dev` /-> ejecutar en tu terminal para poder ver la web
 
-## 👀 Want to learn more?
+# Integrantes
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Matias Ezequiel Manchula / Gabriel Ignacio Ledesma Diaz / Victor Stefano Reaño Cholan 
