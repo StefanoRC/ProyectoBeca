@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const gameId = container.dataset.gameId;
   const scoreToUnlock = parseInt(container.dataset.scoreToUnlock);
 
-  const response = await fetch("/data/games.json");
+  const response = await fetch("/games.json");
   const games = await response.json();
   const game = games.find(g => g.id === gameId);
 
