@@ -26,25 +26,24 @@ import GabrielBio from "./gabrielBio.astro";
   <footer>
     <FormUser
       title="Deja tu mensaje"
-      buttonText={"Enviar mensaje"}
+      buttonText="Enviar mensaje"
+      buttonClass="btn-contact"
       successMessage="Mensaje enviado con exito"
       errorMessage="Error al enviar el mensaje"
       storageKey="contactData"
       validateDuplicates={false}
     >
-      <div class="form-fields">
-        <div class="form-group">
-          <label for="name">Nombre:</label>
-          <input type="text" name="name" required />
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" name="email" required />
-        </div>
-        <div class="form-group">
-          <label for="text_Area">Mensaje</label>
-          <textarea name="text_area" id=""></textarea>
-        </div>
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input type="text" name="name" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label for="text_Area">Mensaje</label>
+        <textarea name="text_area" id="" required></textarea>
       </div>
     </FormUser>
   </footer>
@@ -124,13 +123,6 @@ import GabrielBio from "./gabrielBio.astro";
     text-align: center;
   }
 
-  .form-fields {
-    display: flex;
-    flex-direction: row;
-    gap: 2em;
-    width: 100%;
-  }
-
   .form-group {
     display: flex;
     flex-direction: column;
@@ -139,8 +131,18 @@ import GabrielBio from "./gabrielBio.astro";
     flex: 1 1 0;
   }
 
+  .form-group label {
+    font-size: 1.5rem; 
+    color: var(--text); 
+  }
+
   .form-group input,
   .form-group textarea {
+    font-size: 2rem;
     width: 100%;
+    height: 100%;
+    background: var(--accent);
+    color: var(--text);
+    border-radius: 30px;
   }
 </style>
