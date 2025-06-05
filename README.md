@@ -20,19 +20,24 @@ Instruccion para poder ejecutar nuestro proyecto en tu local
 
 _1_
 `node -version` /-> Verificar si esta node instalado
--------------------------------------------------------
 Si no esta instalado, [https://nodejs.org/es/download]
 sigue los pasos en tu terminal para tenerlo
+-------------------------------------------------------
 
 _2_
 `git clone https://github.com/StefanoRC/ProyectoBeca`  /-> clona el repositorio en tu terminal, dentro de una carpeta nueva
+-------------------------------------------------------
 
 _3_
 `pnpm install` `npm install` /-> instalar dependencia pnpm o npm
+-------------------------------------------------------
 
 _4_
 `pnpm dev` `npm run dev` /-> ejecutar en tu terminal para poder ver la web
+-------------------------------------------------------
 
 # Integrantes
 
-## Matias Ezequiel Manchula / Gabriel Ignacio Ledesma Diaz / Victor Stefano Reaño Cholan 
+## Matias Ezequiel Manchula
+## Gabriel Ignacio Ledesma Diaz
+## Victor Stefano Reaño Cholan 
