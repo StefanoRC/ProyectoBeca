@@ -117,6 +117,7 @@ const {
   </script>
 
   <style>
+
     #register {
       display: flex;
       flex-direction: row;
@@ -154,13 +155,18 @@ const {
     .button-sumbit {
       cursor: pointer;
       display: block;
-      width: 30%;
       background-color: var(--accent);
       color: var(--text);
       border-radius: 5px;
       font-size: 1.5rem;
       padding: 10px;
       transition: background 0.2s ease-in-out;
+    }
+
+    @media screen and (max-width: 1024px) {
+      .form-fields {
+        flex-direction: column;
+      }
     }
   </style>
 </MainLayout>

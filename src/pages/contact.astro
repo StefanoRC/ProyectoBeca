@@ -1,5 +1,6 @@
 ---
 import MainLayout from "../layouts/mainLayout.astro";
+import BaseLayout from "../layouts/baseLayout.astro";
 import FormUser from "./components/formUser.astro";
 import MatiasBio from "./matiasBio.astro";
 import StefanoBio from "./stefanoBio.astro";
@@ -7,6 +8,7 @@ import GabrielBio from "./gabrielBio.astro";
 ---
 
 <MainLayout title={"Contacto"}>
+  <BaseLayout title={"Contacto"}>
   <h1>¿Quienes somos?</h1>
   <p class="intro">
     ¡Bienvenido a nuestro primer proyecto full stack! 🚀 Somos un equipo
@@ -46,6 +48,7 @@ import GabrielBio from "./gabrielBio.astro";
       </div>
     </FormUser>
   </footer>
+  </BaseLayout>
 </MainLayout>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -83,9 +86,42 @@ import GabrielBio from "./gabrielBio.astro";
     });
   });
 </script>
+
 <style>
+  html {
+    margin: 0;
+  }
+  body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  main, section {
+    width: 90%;
+    max-width: 1000px;
+    padding: 0;
+    margin: 0;
+  }
+
+  footer {
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .intro, .members {
+    width: 96%;
+    max-width: 100%;
+    margin: 2%;
+    padding: 0;
+  }
+
   h1 {
     text-align: center;
+    width: 100%;
+    max-width: 100%;
     margin-top: 2rem;
     margin-bottom: 1.5rem;
     font-size: 2.2rem;
@@ -95,12 +131,11 @@ import GabrielBio from "./gabrielBio.astro";
   }
 
   .intro {
-    max-width: 1000px;
-    margin: 1.5rem auto;
     text-align: center;
-    padding: 1rem 2rem;
     background: var(--accent);
+    max-width: 100%;
     border-radius: 8px;
+    margin-bottom: 1rem;
   }
 
   .members {
@@ -108,9 +143,8 @@ import GabrielBio from "./gabrielBio.astro";
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 300px;
-    margin: 2rem auto;
-    padding: 1rem;
+    max-width: 100%;
+    padding: 0;
     border-radius: 8px;
   }
 
@@ -144,4 +178,127 @@ import GabrielBio from "./gabrielBio.astro";
     color: var(--text);
     border-radius: 30px;
   }
+
+/* Responsive */
+  @media screen and (min-width: 1025px) {
+    .members {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2%;
+  }
+  .intro {
+    font-size: 18px;
+    margin: 2%;
+    margin-bottom: 2rem;
+  }
+  footer {
+    display: flex;
+    align-items: center;
+    margin: 2%;
+    padding: 0;
+  }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+  body {
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+
+  main, section {
+    width: 90%;
+    max-width: 800px;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .intro {
+    font-size: 1.2rem;
+    margin: 2%;
+    margin-bottom: 2rem;
+  }
+
+  .members {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2%;
+  }
+
+  .members a {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2%;
+    padding: 0;
+  }
+}
+
+ @media screen and (max-width: 480px) {
+  body {
+    height: auto;
+    overflow-x: hidden;
+  }
+
+  main, section {
+    margin: 0;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 480px;
+  }
+  h1 {
+    font-size: 1.7rem;
+    text-align: center;
+  }
+
+  .intro {
+    font-size: 1rem;
+    margin: 2%;
+  }
+
+  .members {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2%;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 1rem;
+    width: 100%;
+    padding: 0.7rem;
+  }
+
+  .button-submit {
+    width: 100%;
+    font-size: 1.3rem;
+  }
+}
+
 </style>
