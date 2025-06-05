@@ -19,7 +19,7 @@ if (!game) {
 
 <MainLayout title={game.name}>
 <BaseLayout title="GamesQuiz">
-<section class="game-section" data-game-id={game.id}>
+<section class="game-section" data-game-id={game.id} data-image={game.image}>
   <h1 class="game__title">{game.name}</h1>
 
   <div class="game__media">
@@ -54,6 +54,30 @@ if (!game) {
   </h1>
 
 <script type="module" src="/scripts/detailLogic.js"></script>
+<script>
+  function applyMobileBackground() {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const section = document.querySelector(".game-section") as HTMLElement;
+
+    if (!section) return;
+
+    const img = section.dataset.image;
+
+    if (isMobile) {
+      section.style.backgroundImage = `linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9)), url(${img})`;
+      section.style.backgroundSize = "cover";
+      section.style.backgroundRepeat = "no-repeat";
+      section.style.backgroundPosition = "center";
+
+    } else {
+      section.style.backgroundImage = "none";
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", applyMobileBackground);
+  window.addEventListener("resize", applyMobileBackground);
+
+</script>
 </BaseLayout>
 </MainLayout>
 
@@ -146,5 +170,28 @@ if (!game) {
       margin-top: 3rem;
       font-size: 1.5rem;
       color: red;
+    }
+
+/* Responsive */
+
+    /* Mobile */
+    @media screen and (max-width: 786px) {
+      .game-section {
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: 
+          "title"
+          "info"
+          "info";
+/*          background-image: 
+            linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)),
+            url(`${game.image}`);
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center; */
+      }
+      .game__image {
+        display: none;
+      }
     }
   </style>
